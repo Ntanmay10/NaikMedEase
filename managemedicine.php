@@ -86,7 +86,7 @@ if (isset($_REQUEST["btnadd"])) {
             echo "<script>alert('Product inserted')</script>";
         }
     }
-} 
+}  
 
 if (isset($_REQUEST["btndel"])) {
     $prdnm = $_REQUEST["prdnm"];
