@@ -10,46 +10,42 @@
 
 <body>
     <?php include_once 'navbar.php' ?>
-    <div class="format">
 
-        <table class="table table-hover text-center">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">Prod ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                <?php
-                $con = mysqli_connect("localhost", "root", "", "naikmedease");
-                $getdta = mysqli_query($con, "select * from product");
-                while ($row = mysqli_fetch_assoc($getdta)) {
-                    echo "<tr>
+    <table class="table table-hover text-center format rounded">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Prod ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <?php
+            $con = mysqli_connect("localhost", "root", "", "naikmedease");
+            $getdta = mysqli_query($con, "select * from product");
+            while ($row = mysqli_fetch_assoc($getdta)) {
+                echo "<tr>
                 <th scope='row'>" . $row['prdid'] . "</th>
                 <td>" . $row['prdnm'] . "</td>
                 <td>" . $row['prdpri'] . "</td>
                 <td>
                 <form method='post'>
-                <button type='submit' class='btn btn-primary' name='btnupd'>Update</button>
+                <button type='submit' class='btn btn-primary' name='btnupd' value=".$row['prdid'].">Update</button>
                 </form>
                 </td>
                 </tr>
                 ";
 
-                    if (isset($_REQUEST["btnupd"])) {
-                        $_SESSION['prdid'] = $row['prdid'];
-                        $_SESSION['prdnm'] = $row['prdnm'];
-                        $_SESSION['prdpri'] = $row['prdpri'];
-                        header('location:updatemedecine.php');
-                    }
+                if (isset($_REQUEST["btnupd"])) {
+                    $_SESSION['prdid'] =$_REQUEST["btnupd"];
+                    header('location:updatemedecine.php');
                 }
-                ?>
-            </tbody>
-        </table>
+            }
+            ?>
+        </tbody>
+    </table>
 
-    </div>
     <script src="./js/nav.js"></script>
 </body>
 
