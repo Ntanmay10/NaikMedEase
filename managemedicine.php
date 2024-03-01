@@ -12,54 +12,45 @@
     <?php include_once 'navbar.php' ?>
     <div class="format">
 
-        <table class="table table-hover">
+        <table class="table table-hover text-center">
             <thead class="table-dark">
-            <tr>
-                <th scope="col">Prod ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            <?php
-            $con = mysqli_connect("localhost", "root", "", "naikmedease");
-            $getdta = mysqli_query($con, "select * from product");
-            while ($row = mysqli_fetch_array($getdta)) {
-                echo "
                 <tr>
+                    <th scope="col">Prod ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <?php
+                $con = mysqli_connect("localhost", "root", "", "naikmedease");
+                $getdta = mysqli_query($con, "select * from product");
+                while ($row = mysqli_fetch_assoc($getdta)) {
+                    echo "<tr>
                 <th scope='row'>" . $row['prdid'] . "</th>
                 <td>" . $row['prdnm'] . "</td>
                 <td>" . $row['prdpri'] . "</td>
-                <td>Test</td>
+                <td>
+                <form method='post'>
+                <button type='submit' class='btn btn-primary' name='btnupd'>Update</button>
+                </form>
+                </td>
                 </tr>
                 ";
-            }
-            ?>
-        </tbody>
-    </table>
-    
-</div>
+
+                    if (isset($_REQUEST["btnupd"])) {
+                        $_SESSION['prdid'] = $row['prdid'];
+                        $_SESSION['prdnm'] = $row['prdnm'];
+                        $_SESSION['prdpri'] = $row['prdpri'];
+                        header('location:updatemedecine.php');
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
+
+    </div>
+    <script src="./js/nav.js"></script>
 </body>
 
 </html>
-<?php
-$con = mysqli_connect("localhost", "root", "");
-mysqli_select_db($con, "naikmedease");
-if (isset($_REQUEST["btnupd"])) {
-    $prdnm = $_REQUEST["prdnm"];
-    $prodnewname = $_REQUEST["prodnewname"];
-    $prdnewpri = $_REQUEST["prdnewpri"];
-    $q = "SELECT * FROM product WHERE prdnm='$prdnm'";
-    $t = mysqli_query($con, $q);
-    if (mysqli_num_rows($t) > 0) {
-        $updprd = "UPDATE product SET prdnm='$prodnewname', prdpri='$prdnewpri' where prdnm = '$prdnm'";
-        $done = mysqli_query($con, $updprd);
-        if ($done) {
-            echo "<script>alert('Product Updated')</script>";
-        }
-    } else {
-        echo "<script>alert('Product dosen\'t exists')</script>";
-    }
-}
-?>
