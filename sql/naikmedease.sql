@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2024 at 04:57 AM
+-- Generation Time: Mar 01, 2024 at 03:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,19 +51,18 @@ INSERT INTO `company` (`compid`, `compname`) VALUES
 CREATE TABLE `product` (
   `prdid` int(5) NOT NULL,
   `prdnm` varchar(50) NOT NULL,
-  `prdpri` varchar(10) NOT NULL
+  `prdpri` varchar(10) NOT NULL,
+  `compid` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`) VALUES
-(2, 'colgate', '85'),
-(4, 'facewash', '560'),
-(5, 'dabur', '96'),
-(6, 'nycil', '80'),
-(7, 'rovor25', '55');
+INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`) VALUES
+(19, 'toothpaste', '20', 4),
+(20, 'mozila', '55', 4),
+(21, 'eyedrop', '85', 4);
 
 -- --------------------------------------------------------
 
@@ -121,13 +120,13 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `registration`
