@@ -20,9 +20,9 @@
       echo "<div class='card pro'>
               <img src='./images/medecine.jpg' alt='Card 1 Image'>
               <div class='card-info'>
-                <h5 class='card-title'>".$row['prdpri']."</h5>
-                <p class='card-text'>".$row['prdnm']."</p>
-                <a href='#' class='btn btn-primary'>More Details</a>
+                <h5 class='card-title pt-1'>&#8377;" . $row['prdpri'] . "</h5>
+                <p class='card-text'>" . $row['prdnm'] . "</p>
+                <a href='#' class='btn btn-primary'>Add to cart</a>
               </div>
             </div>";
     }
