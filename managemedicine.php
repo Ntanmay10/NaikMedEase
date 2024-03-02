@@ -14,7 +14,7 @@
     <table class="table table-hover text-center format rounded">
         <thead class="table-dark">
             <tr>
-                <th scope="col">Prod ID</th>
+                <th scope="col">Sr. No.</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Handle</th>
