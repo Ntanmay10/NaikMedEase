@@ -24,9 +24,10 @@
             <?php
             $con = mysqli_connect("localhost", "root", "", "naikmedease");
             $getdta = mysqli_query($con, "select * from product");
+            $num=1;
             while ($row = mysqli_fetch_assoc($getdta)) {
                 echo "<tr>
-                <th scope='row'>" . $row['prdid'] . "</th>
+                <th scope='row'>" . $num . "</th>
                 <td>" . $row['prdnm'] . "</td>
                 <td>" . $row['prdpri'] . "</td>
                 <td>
@@ -41,6 +42,7 @@
                     $_SESSION['prdid'] =$_REQUEST["btnupd"];
                     header('location:updatemedecine.php');
                 }
+                $num++;
             }
             ?>
         </tbody>
