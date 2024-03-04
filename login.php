@@ -18,9 +18,11 @@
     if (mysqli_num_rows($t) > 0) {
       $row = mysqli_fetch_array($t);
       if ($row['usertyp'] == 'Admin') {
+        $_SESSION['regid']=$row['regid'];
         $_SESSION['usernm'] = 'Admin';
         header('location:Admin.php');
       } else {
+        $_SESSION['regid']=$row['regid'];
         $_SESSION['usernm'] = $usernm;
         header('location:index.php');
       }
