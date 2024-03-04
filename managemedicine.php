@@ -1,3 +1,4 @@
+<?php include_once 'navbar.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <link rel="stylesheet" href="./css/table.css">
+    <?php
+    if (isset($_REQUEST["btnupd"])) {
+        $_SESSION['prdid'] =$_REQUEST["btnupd"];
+        header('location:updatemedecine.php');
+    }
+    ?>
 </head>
 
 <body>
-    <?php include_once 'navbar.php' ?>
-
     <table class="table table-hover text-center format rounded">
         <thead class="table-dark">
             <tr>
@@ -35,13 +40,7 @@
                 <button type='submit' class='btn btn-primary' name='btnupd' value=".$row['prdid'].">Update</button>
                 </form>
                 </td>
-                </tr>
-                ";
-
-                if (isset($_REQUEST["btnupd"])) {
-                    $_SESSION['prdid'] =$_REQUEST["btnupd"];
-                    header('location:updatemedecine.php');
-                }
+                </tr>";
                 $num++;
             }
             ?>

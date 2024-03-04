@@ -1,3 +1,4 @@
+<?php include_once 'navbar.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,6 @@
 </head>
 
 <body>
-    <?php include_once 'navbar.php'; ?>
     <div class="container">
         <p>
             At NaikMedEase, we believe in making quality healthcare products accessible and affordable for everyone. Since2016, we've been committed to providing a convenient and reliable online platform where you can find everything you need for your health and well-being. We offer a diverse selection of genuine medications, over-the-counter products, and health supplies, all at competitive prices.

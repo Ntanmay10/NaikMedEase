@@ -32,7 +32,14 @@
                     if (isset($_SESSION['usernm']) and $_SESSION['usernm'] != "Admin") {
                         echo "<li class='nav-item'><a class='nav-link' href='#' onclick='medecine();'>medecine</a></li>";
                     } elseif (isset($_SESSION['usernm'])) {
-                        echo "<li class='nav-item'><a class='nav-link' href='#' onclick='manage();'>Manage medecine</a></li>";
+                        echo "<li class='nav-item dropdown'>
+                        <a class='nav-link dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>Medecine</a>
+                        <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                            <a class='dropdown-item' href='#' onclick='comp();'>Add Company</a>
+                            <a class='dropdown-item' href='#' onclick='meds();'>Add Medecine</a>
+                            <a class='dropdown-item' href='#' onclick='manage();'>manage</a>
+                        </div>
+                    </li>";
                     } else {
                         echo "";
                     }
@@ -82,6 +89,14 @@
 
         function Admin() {
             window.location.href = "Admin.php"
+        }
+
+        function comp() {
+            window.location.href = "Addcompany.php"
+        }
+
+        function meds() {
+            window.location.href = "Addmeds.php"
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
