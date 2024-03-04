@@ -31,6 +31,7 @@
                     <?php
                     if (isset($_SESSION['usernm']) and $_SESSION['usernm'] != "Admin") {
                         echo "<li class='nav-item'><a class='nav-link' href='#' onclick='medecine();'>medecine</a></li>";
+                        echo "<li class='nav-item'><a class='nav-link' href='#' onclick='cart();'>Cart</a></li>";
                     } elseif (isset($_SESSION['usernm'])) {
                         echo "<li class='nav-item dropdown'>
                         <a class='nav-link dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>Medecine</a>
@@ -97,6 +98,10 @@
 
         function meds() {
             window.location.href = "Addmeds.php"
+        }
+
+        function cart() {
+            window.location.href = "cart.php"
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
