@@ -1,3 +1,4 @@
+<?php include_once 'navbar.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -16,7 +17,6 @@
 </head>
 
 <body>
-    <?php include_once 'navbar.php'; ?>
 
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
