@@ -1,33 +1,33 @@
-<?php include_once 'navbar.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Meds</title>
+    <?php include_once 'navbar.php'; ?>
     <link rel="stylesheet" href="./css/form.css">
-    
-
-<?php
-$con=mysqli_connect("localhost","root","","naikmedease");
-if (isset($_REQUEST["btnaddmed"])) {
-    $prdnm = $_REQUEST["prdnm"];
-    $prdpri = $_REQUEST["prdpri"];
-    $compid=$_REQUEST["company"];
-    $q = "SELECT * FROM product WHERE prdnm='$prdnm'";
-    $t = mysqli_query($con, $q);
-    if (mysqli_num_rows($t) > 0) {
-        echo "<script>alert('Product already exists')</script>";
-    } else {
-        $addprd = "insert into product(prdnm,prdpri,compid) values('$prdnm','$prdpri','$compid')";
-        $done = mysqli_query($con, $addprd);
-        if ($done) {
-            echo "<script>alert('Product inserted')</script>";
+    <?php
+    $con = mysqli_connect("localhost", "root", "", "naikmedease");
+    if (isset($_REQUEST["btnaddmed"])) {
+        $prdnm = $_REQUEST["prdnm"];
+        $prdpri = $_REQUEST["prdpri"];
+        $compid = $_REQUEST["company"];
+        $q = "SELECT * FROM product WHERE prdnm='$prdnm'";
+        $t = mysqli_query($con, $q);
+        if (mysqli_num_rows($t) > 0) {
+            echo "<script>alert('Product already exists')</script>";
+        } else {
+            $addprd = "insert into product(prdnm,prdpri,compid) values('$prdnm','$prdpri','$compid')";
+            $done = mysqli_query($con, $addprd);
+            if ($done) {
+                echo "<script>alert('Product inserted')</script>";
+            }
         }
     }
-}
-?>
+    ?>
 </head>
+
 <body>
     <div class="form-container" method="post">
         <h2 class="text-center mb-4">Add Product</h2>
@@ -62,4 +62,5 @@ if (isset($_REQUEST["btnaddmed"])) {
         </form>
     </div>
 </body>
+
 </html>

@@ -4,38 +4,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php include_once 'navbar.php'; ?>
   <title>Registration Form</title>
   <link rel="stylesheet" href="./css/form.css">
-  
-<?php
 
-$con = mysqli_connect("localhost", "root", "");
-mysqli_select_db($con, "naikmedease");
+  <?php
 
-if (isset($_REQUEST["btnsub"])) {
-  $regid = "";
-  $fullnm = $_REQUEST["fullnm"];
-  $email = $_REQUEST["email"];
-  $usernm = $_REQUEST["usernm"];
-  $passwd = $_REQUEST["passwd"];
-  $usertyp = "";
+  $con = mysqli_connect("localhost", "root", "");
+  mysqli_select_db($con, "naikmedease");
 
-  $chk = "SELECT * FROM registration WHERE email='$email' OR usernm='$usernm'";
-  $t = mysqli_query($con, $chk);
-  if (mysqli_num_rows($t) > 0) {
-    echo "<script>alert('Email or Username already Exists')</script>";
-  } else {
-    $q = "insert into registration (fullnm,usernm,email,passwd) values ('$fullnm','$usernm','$email','$passwd')";
-    $exeqr = mysqli_query($con, $q);
-    if ($exeqr) {
-      header('location:login.php');
+  if (isset($_REQUEST["btnsub"])) {
+    $regid = "";
+    $fullnm = $_REQUEST["fullnm"];
+    $email = $_REQUEST["email"];
+    $usernm = $_REQUEST["usernm"];
+    $passwd = $_REQUEST["passwd"];
+    $usertyp = "";
+
+    $chk = "SELECT * FROM registration WHERE email='$email' OR usernm='$usernm'";
+    $t = mysqli_query($con, $chk);
+    if (mysqli_num_rows($t) > 0) {
+      echo "<script>alert('Email or Username already Exists')</script>";
+    } else {
+      $q = "insert into registration (fullnm,usernm,email,passwd) values ('$fullnm','$usernm','$email','$passwd')";
+      $exeqr = mysqli_query($con, $q);
+      if ($exeqr) {
+        header('location:login.php');
+      }
     }
   }
-}
-?>
+  ?>
 </head>
 
-<?php include_once 'navbar.php'; ?>
 
 <body>
   <div class="form-container">

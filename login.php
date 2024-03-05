@@ -1,4 +1,3 @@
-<?php include_once './navbar.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Form</title>
+  <?php include_once './navbar.php'; ?>
   <link rel="stylesheet" href="./css/form.css">
   <?php
   $con = mysqli_connect("localhost", "root", "");
@@ -18,11 +18,11 @@
     if (mysqli_num_rows($t) > 0) {
       $row = mysqli_fetch_array($t);
       if ($row['usertyp'] == 'Admin') {
-        $_SESSION['regid']=$row['regid'];
+        $_SESSION['regid'] = $row['regid'];
         $_SESSION['usernm'] = 'Admin';
         header('location:Admin.php');
       } else {
-        $_SESSION['regid']=$row['regid'];
+        $_SESSION['regid'] = $row['regid'];
         $_SESSION['usernm'] = $usernm;
         header('location:index.php');
       }
