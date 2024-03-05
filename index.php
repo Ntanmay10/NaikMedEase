@@ -1,12 +1,12 @@
-<?php include_once 'navbar.php'; ?>
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/index.css">
     <title>Naik MedEase</title>
+    <?php include_once 'navbar.php'; ?>
+    <link rel="stylesheet" href="./css/index.css">
     <style>
         .msg {
             width: 50%;
@@ -40,12 +40,12 @@
         </button>
     </div>
     <?php
-    if(!isset($_SESSION['usernm'])){
-       echo" <div class='msg'>
+    if (!isset($_SESSION['usernm'])) {
+        echo " <div class='msg'>
         <h1>Login to get started</h1>
         </div>";
     }
-        ?>
+    ?>
     <div class="iconimage">
         <img src="./Images/Iconbar.jpg" alt="unclickable icons" />
     </div>

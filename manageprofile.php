@@ -1,33 +1,33 @@
-<?php include_once './navbar.php' ?>
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Manage Profile</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Profile</title>
+    <?php include_once './navbar.php' ?>
     <link rel="stylesheet" href="./css/form.css">
-    
 
-<?php
-if (empty($_SESSION['usernm'])) {
-    header('location:login.php');
-}
-?>
-<?php
 
-$con = mysqli_connect("localhost", "root", "");
-mysqli_select_db($con, "naikmedease");
+    <?php
+    if (empty($_SESSION['usernm'])) {
+        header('location:login.php');
+    }
+    ?>
+    <?php
 
-if (isset($_REQUEST["btnupd"])) {
-    $usernm = $_SESSION["usernm"];
-    $fullnm = $_REQUEST["fullnm"];
-    $passwd = $_REQUEST["passwd"];
-    $upd = " UPDATE registration SET fullnm='$fullnm', passwd='$passwd' WHERE usernm='$usernm'";
-    $upddta = mysqli_query($con, $upd);
-    header('location:logout.php');
-}
-?>
+    $con = mysqli_connect("localhost", "root", "");
+    mysqli_select_db($con, "naikmedease");
+
+    if (isset($_REQUEST["btnupd"])) {
+        $usernm = $_SESSION["usernm"];
+        $fullnm = $_REQUEST["fullnm"];
+        $passwd = $_REQUEST["passwd"];
+        $upd = " UPDATE registration SET fullnm='$fullnm', passwd='$passwd' WHERE usernm='$usernm'";
+        $upddta = mysqli_query($con, $upd);
+        header('location:logout.php');
+    }
+    ?>
 </head>
 
 <body>

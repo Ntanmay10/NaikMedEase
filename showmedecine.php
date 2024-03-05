@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/medecine.css">
   <title>Medicine</title>
+  <?php include_once 'navbar.php' ?>
+  <link rel="stylesheet" href="./css/medecine.css">
 </head>
 
 <body>
-  <?php include_once 'navbar.php' ?>
   <div class="card-container">
     <?php
     $con = mysqli_connect("localhost", "root", "");
@@ -20,8 +20,8 @@
       echo "<div class='card pro'>
               <img src='./images/medecine.jpg' alt='Card 1 Image'>
               <div class='card-info'>
-                <h5 class='card-title'>".$row['prdpri']."</h5>
-                <p class='card-text'>".$row['prdnm']."</p>
+                <h5 class='card-title'>" . $row['prdpri'] . "</h5>
+                <p class='card-text'>" . $row['prdnm'] . "</p>
                 <a href='#' class='btn btn-primary'>More Details</a>
               </div>
             </div>";
