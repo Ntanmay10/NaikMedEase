@@ -7,6 +7,11 @@
     <title>About Us</title>
     <?php include_once 'navbar.php'; ?>
     <link rel="stylesheet" href="./css/aboutus.css">
+    <style>
+        .mid {
+            margin-left: 45%;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,6 +28,13 @@
             Your health is our priority. Contact us today if you have any questions or need assistance finding the right products for your needs.
         </p>
     </div>
+    <?php
+    if (!isset($_SESSION['usernm'])) {
+        echo "<div><button type='submit' onclick='home();' class='btn btn-primary mid'>Home</button></div>";
+    }
+    ?>
+
+    <script src="./js/nav.js"></script>
 </body>
 
 </html>

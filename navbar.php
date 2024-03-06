@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,6 +64,11 @@
                             <li><a class="dropdown-item" href="#" onclick="manageprofile();">Manage Profile</a></li>
                         </ul>
                     </li>
+                    <?php
+                    if (!isset($_SESSION['usernm'])) {
+                        echo "<li class='nav-item'><a class='nav-link' href='#' onclick='contus();'>Contact Us</a></li>";
+                    }
+                    ?>
                 </ul>
                 <?php
                 if (isset($_SESSION['usernm'])) {
@@ -101,6 +107,10 @@
 
         function cart() {
             window.location.href = "cart.php"
+        }
+
+        function contus(){
+            window.location.href="contactus.php"
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
