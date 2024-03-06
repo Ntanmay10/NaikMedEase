@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2024 at 03:56 AM
+-- Generation Time: Mar 06, 2024 at 03:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cartid` int(5) NOT NULL,
+  `prdid` int(5) NOT NULL,
+  `regid` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cartid`, `prdid`, `regid`) VALUES
+(1, 19, 32),
+(2, 20, 41),
+(15, 20, 41),
+(17, 22, 41),
+(18, 20, 32),
+(21, 19, 32),
+(22, 19, 32),
+(23, 19, 32),
+(24, 22, 32),
+(25, 32, 32),
+(26, 32, 41),
+(33, 20, 32),
+(34, 19, 32);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `company`
 --
 
@@ -37,10 +68,18 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`compid`, `compname`) VALUES
+(13, 'Abbota'),
+(14, 'apollopharma'),
+(12, 'Cipla ltd.'),
 (4, 'dabur'),
-(3, 'mozila'),
+(11, 'indianpharma'),
+(3, 'intas'),
+(8, 'mankind'),
 (2, 'naikdrugs'),
-(1, 'patelpharma');
+(9, 'nationalmeds'),
+(7, 'patanjali'),
+(1, 'patelpharma'),
+(10, 'sunpharma');
 
 -- --------------------------------------------------------
 
@@ -60,9 +99,20 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`) VALUES
-(19, 'toothpaste', '20', 4),
-(20, 'mozila', '55', 4),
-(21, 'eyedrop', '85', 4);
+(19, 'Tooth paste', '40', 4),
+(20, 'Tooth Brush', '15', 4),
+(21, 'Eye Drop', '85', 4),
+(22, 'Face wash', '150', 2),
+(23, 'cerasoft', '215', 2),
+(24, 'cetafill', '420', 4),
+(25, 'Hair wax', '280', 7),
+(26, 'honey', '120', 8),
+(27, 'honeydrop', '2', 9),
+(28, 'moiz', '265', 10),
+(29, 'Rovor', '290', 11),
+(30, 'clotrimazole cream ip', '125', 12),
+(31, 'Hand Sanatizer', '165', 13),
+(32, 'Sun screen 50spf', '350', 14);
 
 -- --------------------------------------------------------
 
@@ -84,12 +134,19 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`regid`, `fullnm`, `usernm`, `email`, `passwd`, `usertyp`) VALUES
-(26, 'Tanmay Naik', 'Admin', 'findtanmay10@gmail.com', '1234', 'Admin'),
-(32, 'Mahek Naik', 'mahek1', 'mahek@gmail.com', '1234', 'User');
+(26, 'Tanmay Amar Naik', 'Admin', 'findtanmay10@gmail.com', 'Tanmay@2510', 'Admin'),
+(32, 'Mahek Niraj Naik', 'mahek1', 'mahek@gmail.com', 'Mahek@2110', 'User'),
+(41, 'Chirag Patel', 'chixyy', 'chixy@gmail.com', 'Chixy@1708', 'User');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cartid`);
 
 --
 -- Indexes for table `company`
@@ -117,22 +174,28 @@ ALTER TABLE `registration`
 --
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `regid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `regid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
