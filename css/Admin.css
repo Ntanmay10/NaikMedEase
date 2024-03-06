@@ -1,0 +1,32 @@
+.total>td {
+    font-weight: bold;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+}
+
+.cart-table th {
+    background-color: #f8f9fa;
+}
+
+.cart-total {
+    text-align: right;
+    font-size: 18px;
+}
+
+.checkout-btn {
+    margin-left: 35vw;
+}
+
+.container>h2 {
+    text-align: center;
+}

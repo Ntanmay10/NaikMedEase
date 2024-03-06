@@ -11,7 +11,6 @@
     $regid = $_SESSION['regid'];
     $getcart = mysqli_query($con, "SELECT * FROM cart WHERE regid=$regid");
     $tot = 0;
-
     ?>
     <link rel="stylesheet" href="./css/cart.css">
 </head>
