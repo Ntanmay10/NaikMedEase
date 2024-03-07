@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2024 at 06:23 AM
+-- Generation Time: Mar 07, 2024 at 11:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,12 +51,14 @@ CREATE TABLE `company` (
 INSERT INTO `company` (`compid`, `compname`) VALUES
 (13, 'Abbota'),
 (14, 'apollopharma'),
+(21, 'beardo'),
 (12, 'Cipla ltd.'),
 (4, 'dabur'),
 (16, 'Dove'),
 (17, 'Ghar soap'),
 (11, 'indianpharma'),
 (3, 'intas'),
+(20, 'leeford'),
 (8, 'mankind'),
 (2, 'naikdrugs'),
 (9, 'nationalmeds'),
@@ -85,9 +87,7 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`) VALUES
-(1, 'Tanmay', 'tanmay@gmail.com', 'I need facewash'),
-(3, 'mahek', 'mahek@gmail.com', 'I need Brush'),
-(4, 'chirag', 'chixy@gmail.com', 'i want meds');
+(10, 'Deep Ahir', 'Deep@gmail.com', 'I want toothbrush');
 
 -- --------------------------------------------------------
 
@@ -109,13 +109,15 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `unit`) VALUES
-(40, 'Shampoo', '180', 16, 'shampoo.jpg', 100),
-(41, 'magic soap', '55', 17, 'soap.jpg', 185),
-(42, 'syrup', '80', 3, 'syrup.jpeg', 250),
-(43, 'nicotex', '150', 12, 'nicotex.jpeg', 50),
-(44, 'clocip', '95', 12, 'powder.png', 60),
-(45, 'Rovor 2.5', '545', 18, 'rovor.jpeg', 55),
-(46, 'facewash', '120', 19, 'facewash2.jpeg', 60);
+(48, 'Dove Shampoo', '150', 16, 'shampoo.jpg', 10),
+(49, 'diprolite', '65', 20, 'diprolite.jpeg', 10),
+(50, 'magic soap', '150', 17, 'soap.jpg', 15),
+(51, 'syrup', '200', 3, 'syrup.jpeg', 10),
+(52, 'wildstone face wash', '180', 19, 'facewash.jpeg', 10),
+(53, 'Beardo face wash', '215', 21, 'facewash2.jpeg', 15),
+(54, 'Nicotex', '140', 12, 'nicotex.jpeg', 12),
+(55, 'clocip', '50', 12, 'powder.png', 10),
+(56, 'Rovor 2.5', '500', 18, 'rovor.jpeg', 10);
 
 -- --------------------------------------------------------
 
@@ -138,8 +140,7 @@ CREATE TABLE `registration` (
 
 INSERT INTO `registration` (`regid`, `fullnm`, `usernm`, `email`, `passwd`, `usertyp`) VALUES
 (26, 'Tanmay Amar Naik', 'Admin', 'findtanmay10@gmail.com', 'Tanmay@2510', 'Admin'),
-(32, 'Mahek Niraj Naik', 'mahek1', 'mahek@gmail.com', 'Mahek@2110', 'User'),
-(41, 'Chirag Patel', 'chixyy', 'chixy@gmail.com', 'Chixy@1708', 'User');
+(46, 'Mahek Naik', 'mahek21', 'mahek@gmail.com', 'Mahek@2110', 'User');
 
 --
 -- Indexes for dumped tables
@@ -192,25 +193,25 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `regid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `regid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
