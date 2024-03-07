@@ -1,4 +1,3 @@
-<?php include_once 'navbar.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Medecine</title>
-    <link rel="stylesheet" href="./css/form.css">
+    <?php include_once 'navbar.php' ?>
     <?php
     function getdata()
     {
@@ -17,44 +16,55 @@
             while ($row = mysqli_fetch_array($q)) {
                 $GLOBALS["prdnm"] = $row['prdnm'];
                 $GLOBALS["prdpri"] = $row['prdpri'];
+                $GLOBALS["prdunit"] = $row['unit'];
+                $GLOBALS["prdimg"] = $row['prdimg'];
             }
         }
     }
     ?>
-
     <?php
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
     if (isset($_REQUEST["btnupdmed"])) {
         $prdid = $_SESSION['prdid'];
         $prdnm = $_REQUEST["prdnm"];
         $prdpri = $_REQUEST["prdpri"];
+        $prdunit = $_REQUEST["prdunit"];
+        $updfilename = $_FILES["updmedimg"]["name"];
+        $updtmpname = $_FILES["updmedimg"]["tmp_name"];
+        move_uploaded_file($updtmpname, "medimage/$updfilename");
         $q = "SELECT * FROM product WHERE prdid='$prdid'";
         $t = mysqli_query($con, $q);
         if (mysqli_num_rows($t) > 0) {
-            $updprd = "UPDATE product SET prdnm='$prdnm', prdpri='$prdpri' where prdid = '$prdid'";
+            $updprd = "UPDATE product SET prdnm='$prdnm', prdpri='$prdpri',unit='$prdunit',prdimg='$updfilename' where prdid = '$prdid'";
             $done = mysqli_query($con, $updprd);
             if ($done) {
-                echo "<script>alert('Product Updated')</script>";
                 header('location:managemedicine.php');
             }
         }
     }
     ?>
+    <link rel="stylesheet" href="./css/form.css">
 </head>
 
 <body>
     <div class="form-container" method="post">
         <h2 class="text-center mb-4">Update medecine</h2>
-        <form id="loginForm" method="post">
+        <form id="loginForm" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">Product Name</label>
-                <input type="text" class="form-control" id="username" name="prdnm" value="<?php getdata();
-                                                                                            echo $prdnm ?>" required>
+                <input type="text" class="form-control" id="username" name="prdnm" value="<?php getdata(); echo $prdnm ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Medecine Image</label>
+                <input class="form-control" type="file" id="formFile" name="updmedimg">
             </div>
             <div class="form-group">
                 <label for="prodprice">Product Price</label>
-                <input type="text" class="form-control" id="prodprice" name="prdpri" value="<?php getdata();
-                                                                                            echo $prdpri ?>" required>
+                <input type="text" class="form-control" id="prodprice" name="prdpri" value="<?php getdata(); echo $prdpri ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="prdunit">Product Unit</label>
+                <input type="text" class="form-control" id="prdunit" name="prdunit" value="<?php getdata(); echo $prdunit ?>" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block mid" name="btnupdmed">Update</button>
         </form>

@@ -26,7 +26,7 @@
     //loop through the item table and gather details of the item and printing them
     while ($row = mysqli_fetch_assoc($result)) {
       echo "<div class='card pro'>
-              <img src='./images/medecine.jpg' alt='Card 1 Image'>
+              <img src='./medimage/".$row['prdimg']."' alt='Card 1 Image' width='100%'  height='250px'>
               <div class='card-info'>
                 <h5 class='card-title pt-1'>&#8377;" . $row['prdpri'] . "</h5>
                 <p class='card-text'>" . $row['prdnm'] . "</p>
@@ -37,8 +37,6 @@
             </div>";
     }
     ?>
-  </div>
-
 </body>
 
 </html>

@@ -29,7 +29,7 @@
                     }
                     ?>
                     <?php
-                    if (isset($_SESSION['usernm']) and $_SESSION['usernm'] != "Admin") {
+                    if (isset($_SESSION['usernm']) and ($_SESSION['usernm'] != "Admin")) {
                         echo "<li class='nav-item'><a class='nav-link' href='#' onclick='medecine();'>medecine</a></li>";
                         echo "<li class='nav-item'><a class='nav-link' href='#' onclick='cart();'>Cart</a></li>";
                     } elseif (isset($_SESSION['usernm'])) {
@@ -72,18 +72,15 @@
                 </ul>
                 <?php
                 if (isset($_SESSION['usernm'])) {
-                    echo "
-                    <form class='d-flex' role='search' method='post'>
+                    echo "<form class='d-flex' role='search' method='post'>
                         <input class='form-control me-2' type='search' placeholder='Search' aria-label='Search'>
                         <button class='btn btn-outline-success' type='submit'>Search</button>
-                    </form>
-                    ";
+                    </form>";
                 }
                 ?>
             </div>
         </div>
     </nav>
-    <script src="./js/nav.js"></script>
     <script>
         function logout() {
             window.location.href = "logout.php"
@@ -113,6 +110,7 @@
             window.location.href="contactus.php"
         }
     </script>
+    <script src="./js/nav.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
