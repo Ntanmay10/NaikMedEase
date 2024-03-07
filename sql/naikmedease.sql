@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2024 at 03:57 AM
+-- Generation Time: Mar 07, 2024 at 06:23 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,25 +33,6 @@ CREATE TABLE `cart` (
   `regid` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cartid`, `prdid`, `regid`) VALUES
-(1, 19, 32),
-(2, 20, 41),
-(15, 20, 41),
-(17, 22, 41),
-(18, 20, 32),
-(21, 19, 32),
-(22, 19, 32),
-(23, 19, 32),
-(24, 22, 32),
-(25, 32, 32),
-(26, 32, 41),
-(33, 20, 32),
-(34, 19, 32);
-
 -- --------------------------------------------------------
 
 --
@@ -72,6 +53,8 @@ INSERT INTO `company` (`compid`, `compname`) VALUES
 (14, 'apollopharma'),
 (12, 'Cipla ltd.'),
 (4, 'dabur'),
+(16, 'Dove'),
+(17, 'Ghar soap'),
 (11, 'indianpharma'),
 (3, 'intas'),
 (8, 'mankind'),
@@ -79,7 +62,32 @@ INSERT INTO `company` (`compid`, `compname`) VALUES
 (9, 'nationalmeds'),
 (7, 'patanjali'),
 (1, 'patelpharma'),
-(10, 'sunpharma');
+(15, 'perfora'),
+(10, 'sunpharma'),
+(18, 'Torrent pharma'),
+(19, 'wildstone');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `cntid` int(5) NOT NULL,
+  `cntname` varchar(25) NOT NULL,
+  `cntemail` varchar(50) NOT NULL,
+  `cntdesc` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`) VALUES
+(1, 'Tanmay', 'tanmay@gmail.com', 'I need facewash'),
+(3, 'mahek', 'mahek@gmail.com', 'I need Brush'),
+(4, 'chirag', 'chixy@gmail.com', 'i want meds');
 
 -- --------------------------------------------------------
 
@@ -91,28 +99,23 @@ CREATE TABLE `product` (
   `prdid` int(5) NOT NULL,
   `prdnm` varchar(50) NOT NULL,
   `prdpri` varchar(10) NOT NULL,
-  `compid` int(5) NOT NULL
+  `compid` int(5) NOT NULL,
+  `prdimg` varchar(100) NOT NULL,
+  `unit` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`) VALUES
-(19, 'Tooth paste', '40', 4),
-(20, 'Tooth Brush', '15', 4),
-(21, 'Eye Drop', '85', 4),
-(22, 'Face wash', '150', 2),
-(23, 'cerasoft', '215', 2),
-(24, 'cetafill', '420', 4),
-(25, 'Hair wax', '280', 7),
-(26, 'honey', '120', 8),
-(27, 'honeydrop', '2', 9),
-(28, 'moiz', '265', 10),
-(29, 'Rovor', '290', 11),
-(30, 'clotrimazole cream ip', '125', 12),
-(31, 'Hand Sanatizer', '165', 13),
-(32, 'Sun screen 50spf', '350', 14);
+INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `unit`) VALUES
+(40, 'Shampoo', '180', 16, 'shampoo.jpg', 100),
+(41, 'magic soap', '55', 17, 'soap.jpg', 185),
+(42, 'syrup', '80', 3, 'syrup.jpeg', 250),
+(43, 'nicotex', '150', 12, 'nicotex.jpeg', 50),
+(44, 'clocip', '95', 12, 'powder.png', 60),
+(45, 'Rovor 2.5', '545', 18, 'rovor.jpeg', 55),
+(46, 'facewash', '120', 19, 'facewash2.jpeg', 60);
 
 -- --------------------------------------------------------
 
@@ -156,6 +159,12 @@ ALTER TABLE `company`
   ADD UNIQUE KEY `compname` (`compname`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`cntid`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -177,19 +186,25 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `registration`
