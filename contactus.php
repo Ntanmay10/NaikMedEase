@@ -17,13 +17,9 @@
         $done = mysqli_query($con, $addque);
         if ($done) {
             echo "<script>alert('Query Raised')</script>";
+            header('refresh:0');
         }
     }
-
-    if (isset($_REQUEST["btnstat"])) {
-        header('location:checkstatus.php');
-    }
-
     ?>
 </head>
 
