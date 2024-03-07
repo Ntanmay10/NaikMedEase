@@ -42,7 +42,7 @@
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Medecine Image</label>
-                <input class="form-control" type="file" id="formFile" name="medimg">
+                <input class="form-control" type="file" id="formFile" name="medimg" required>
             </div>
             <div class='form-group'>
                 <label for='company'>Product Company</label>
@@ -54,7 +54,7 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "
                         <option 
-                        value=" . $row['compid'] . ">
+                        value=" . $row['compid'] . " required>
                         " . $row['compname'] . "
                         </option>
                         ";
