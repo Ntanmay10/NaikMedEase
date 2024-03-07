@@ -12,6 +12,7 @@
     $getcart = mysqli_query($con, "SELECT * FROM cart WHERE regid=$regid");
     $tot = 0;
     ?>
+    
     <?php
     if (isset($_REQUEST["btndel"])) {
         $cartid = $_REQUEST["btndel"];
