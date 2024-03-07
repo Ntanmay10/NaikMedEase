@@ -12,6 +12,13 @@
     $getcart = mysqli_query($con, "SELECT * FROM cart WHERE regid=$regid");
     $tot = 0;
     ?>
+    <?php
+    if (isset($_REQUEST["btndel"])) {
+        $cartid = $_REQUEST["btndel"];
+        mysqli_query($con, "DELETE FROM cart WHERE cartid='$cartid'");
+        header('refresh:0');
+    }
+    ?>
     <link rel="stylesheet" href="./css/cart.css">
 </head>
 
@@ -21,7 +28,9 @@
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr>
-                    <th>Product Name</th>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Delete</th>
                     <th>Price</th>
                 </tr>
             </thead>
@@ -33,7 +42,11 @@
                     while ($prow = mysqli_fetch_array($getprd)) {
                         $tot = $tot + $prow['prdpri'];
                         echo "<tr>
+                        <td><img src='./medimage/" . $prow['prdimg'] . "' alt='Card 1 Image' width='35%'  height='100px'>
                         <td>" . $prow['prdnm'] . " 
+                        <form method='post'>
+                        <td><button class='btn btn-danger' value=" . $row['cartid'] . " name='btndel'>Remove</button>
+                        </form>
                         <td>" . $prow['prdpri'] . " 
                         </tr>
                         ";
@@ -41,7 +54,7 @@
                 }
                 ?>
                 <tr class="total table-info">
-                    <td>Total Price : </td>
+                    <td colspan="3">Total Price : </td>
                     <td><?php echo $tot ?></td>
                 </tr>
             </tbody>

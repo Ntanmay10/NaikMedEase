@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2024 at 11:11 AM
+-- Generation Time: Mar 07, 2024 at 05:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,6 +32,14 @@ CREATE TABLE `cart` (
   `prdid` int(5) NOT NULL,
   `regid` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cartid`, `prdid`, `regid`) VALUES
+(49, 54, 47),
+(53, 55, 46);
 
 -- --------------------------------------------------------
 
@@ -87,7 +95,8 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`) VALUES
-(10, 'Deep Ahir', 'Deep@gmail.com', 'I want toothbrush');
+(10, 'Deep Ahir', 'Deep@gmail.com', 'I want toothbrush'),
+(14, 'Mann Ahir', 'Mann@gmail.com', 'I want hair gel');
 
 -- --------------------------------------------------------
 
@@ -110,8 +119,8 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `unit`) VALUES
 (48, 'Dove Shampoo', '150', 16, 'shampoo.jpg', 10),
-(49, 'diprolite', '65', 20, 'diprolite.jpeg', 10),
-(50, 'magic soap', '150', 17, 'soap.jpg', 15),
+(49, 'Diprolite skin cream', '65', 20, 'diprolite.jpeg', 10),
+(50, 'Magic soap', '150', 17, 'soap.jpg', 15),
 (51, 'syrup', '200', 3, 'syrup.jpeg', 10),
 (52, 'wildstone face wash', '180', 19, 'facewash.jpeg', 10),
 (53, 'Beardo face wash', '215', 21, 'facewash2.jpeg', 15),
@@ -140,7 +149,8 @@ CREATE TABLE `registration` (
 
 INSERT INTO `registration` (`regid`, `fullnm`, `usernm`, `email`, `passwd`, `usertyp`) VALUES
 (26, 'Tanmay Amar Naik', 'Admin', 'findtanmay10@gmail.com', 'Tanmay@2510', 'Admin'),
-(46, 'Mahek Naik', 'mahek21', 'mahek@gmail.com', 'Mahek@2110', 'User');
+(46, 'Mahek Naik', 'mahek21', 'mahek@gmail.com', 'Mahek@2110', 'User'),
+(47, 'Chirag Patel', 'Chixy17', 'chixy@gmail.com', 'Chixy@1708', 'User');
 
 --
 -- Indexes for dumped tables
@@ -187,7 +197,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -199,7 +209,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -211,7 +221,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `regid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `regid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
