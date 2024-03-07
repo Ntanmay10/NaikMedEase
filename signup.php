@@ -7,19 +7,15 @@
   <?php include_once 'navbar.php'; ?>
   <title>Registration Form</title>
   <link rel="stylesheet" href="./css/form.css">
-
   <?php
-
   $con = mysqli_connect("localhost", "root", "");
   mysqli_select_db($con, "naikmedease");
 
   if (isset($_REQUEST["btnsub"])) {
-    $regid = "";
     $fullnm = $_REQUEST["fullnm"];
     $email = $_REQUEST["email"];
     $usernm = $_REQUEST["usernm"];
     $passwd = $_REQUEST["passwd"];
-    $usertyp = "";
 
     $chk = "SELECT * FROM registration WHERE email='$email' OR usernm='$usernm'";
     $t = mysqli_query($con, $chk);
@@ -38,12 +34,13 @@
 
 
 <body>
-  <div class="form-container">
+  <div class="form-container" method="post">
     <h2 class="text-center mb-4">Sign Up</h2>
     <form id="registrationForm" method="post">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" name="fullnm" required>
+        <input type="text" class="form-control" id="fullName" name="fullnm" pattern="[A-Za-z ]{3,30}"
+        title="Minimum 3chars and Max 30, Chars Only" required>
       </div>
       <div class="form-group">
         <label for="email">Email Address</label>
@@ -51,13 +48,15 @@
       </div>
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="usernm" required>
+        <input type="text" class="form-control" id="username" name="usernm"  pattern="[A-Za-z 0-9]{3,30}"
+        title="Minimum 3 and Max 30 alphanumeric code" required>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="passwd" required>
+        <input type="password" class="form-control" id="password" name="passwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number
+        and one uppercase and lowercase letter, and at least 8 or more characters" required>
       </div>
-      <button type="submit" name="btnsub" class="btn btn-primary btn-block mid" onclick="login();">Sign Up</button>
+      <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Sign Up</button>
     </form>
   </div>
 </body>

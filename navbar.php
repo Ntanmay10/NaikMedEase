@@ -38,7 +38,7 @@
                         <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
                             <a class='dropdown-item' href='#' onclick='comp();'>Add Company</a>
                             <a class='dropdown-item' href='#' onclick='meds();'>Add Medecine</a>
-                            <a class='dropdown-item' href='#' onclick='manage();'>manage</a>
+                            <a class='dropdown-item' href='#' onclick='manage();'>manage medecine</a>
                         </div>
                     </li>";
                     } else {

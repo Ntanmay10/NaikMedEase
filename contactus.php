@@ -20,6 +20,10 @@
         }
     }
 
+    if (isset($_REQUEST["btnstat"])) {
+        header('location:checkstatus.php');
+    }
+
     ?>
 </head>
 
@@ -29,7 +33,8 @@
         <form id="registrationForm" method="post">
             <div class="form-group">
                 <label for="fullName">Full Name</label>
-                <input type="text" class="form-control" id="fullName" name="cname" required>
+                <input type="text" class="form-control" id="fullName" name="cname" pattern="[A-Za-z ]{3,30}"
+        title="Minimum 3chars and Max 30, Chars Only" required>
             </div>
             <div class="form-group">
                 <label for="email">Email Address</label>
@@ -39,7 +44,7 @@
                 <label for="Desc">Description</label>
                 <textarea class="form-control form-control-lg" id="Desc" name="msg"></textarea>
             </div>
-            <button type="submit" name="btnsub" class="btn btn-primary btn-block mid" onclick="login();">Submit</button>
+            <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Submit</button>
         </form>
     </div>
 </body>
