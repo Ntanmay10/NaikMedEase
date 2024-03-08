@@ -56,7 +56,8 @@
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Medecine Image</label>
-                <input class="form-control" type="file" id="formFile" name="updmedimg" title="<?php getdata(); echo $prdimg ?>">
+                <img src="./medimage/<?php getdata(); echo $prdimg ?>" alt="prdimg" width="30%" height="100px">
+                <input class="form-control mt-1" type="file" id="formFile" name="updmedimg" title="<?php getdata(); echo $prdimg ?>">
             </div>
             <div class="form-group">
                 <label for="prodprice">Product Price</label>
