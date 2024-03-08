@@ -25,8 +25,8 @@
         }
     }
     ?>
+    <link rel="stylesheet" href="./css/table.css">
 </head>
-
 <body>
     <div class="form-container" method="post">
         <h2 class="text-center mb-4">Add Company</h2>
@@ -38,6 +38,29 @@
             <button type="submit" class="btn btn-primary btn-block mid" name="btnadd">Add</button>
         </form>
     </div>
+
+    <table class="table table-hover text-center format rounded">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <?php
+            $getdta = mysqli_query($con, "select * from company");
+            $num = 1;
+            while ($row = mysqli_fetch_assoc($getdta)) {
+                echo "<tr>
+                <th scope='row'>" . $num . "</th>
+                <td>" . $row['compname'] . "</td>
+                </td>
+                </tr>";
+                $num++;
+            }
+            ?>
+        </tbody>
+    </table>
 </body>
 
 </html>
