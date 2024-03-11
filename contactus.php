@@ -6,21 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <?php include_once 'navbar.php' ?>
-    <link rel="stylesheet" href="./css/form.css">
     <?php
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
     if (isset($_REQUEST["btnsub"])) {
         $cntname = $_REQUEST['cname'];
         $email = $_REQUEST['email'];
         $message = $_REQUEST['msg'];
-        $addque = "insert into contact(cntname,cntemail,cntdesc) values('$cntname','$email','$message')";
+        $cntcode=rand(1000,9999);
+        $addque = "insert into contact(cntname,cntemail,cntdesc,cntcode) values('$cntname','$email','$message','$cntcode')";
         $done = mysqli_query($con, $addque);
         if ($done) {
-            echo "<script>alert('Query Raised')</script>";
+            echo "<script>
+            alert('Query Raised & cntcode=$cntcode, Please share this code with the concerned person');
+            </script>";
             header('refresh:0');
         }
     }
     ?>
+    <link rel="stylesheet" href="./css/form.css">
+    <style>
+        .mid1 {
+            margin-left: 40%;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,8 +37,7 @@
         <form id="registrationForm" method="post">
             <div class="form-group">
                 <label for="fullName">Full Name</label>
-                <input type="text" class="form-control" id="fullName" name="cname" pattern="[A-Za-z ]{3,30}"
-        title="Minimum 3chars and Max 30, Chars Only" required>
+                <input type="text" class="form-control" id="fullName" name="cname" pattern="[A-Za-z ]{3,30}" title="Minimum 3chars and Max 30, Chars Only" required>
             </div>
             <div class="form-group">
                 <label for="email">Email Address</label>
@@ -42,6 +49,9 @@
             </div>
             <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Submit</button>
         </form>
+        <div>
+            <a type="submit" class="btn btn-primary btn-block mt-1 mid1" href="./checkstatus.php">check status</a>
+        </div>
     </div>
 </body>
 
