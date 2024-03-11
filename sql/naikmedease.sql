@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2024 at 05:06 PM
+-- Generation Time: Mar 11, 2024 at 06:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`cartid`, `prdid`, `regid`) VALUES
 (49, 54, 47),
-(53, 55, 46);
+(54, 48, 46);
 
 -- --------------------------------------------------------
 
@@ -60,13 +60,16 @@ INSERT INTO `company` (`compid`, `compname`) VALUES
 (13, 'Abbota'),
 (14, 'apollopharma'),
 (21, 'beardo'),
+(23, 'Chiragpharma&co'),
 (12, 'Cipla ltd.'),
 (4, 'dabur'),
 (16, 'Dove'),
+(22, 'Dove india'),
 (17, 'Ghar soap'),
 (11, 'indianpharma'),
 (3, 'intas'),
 (20, 'leeford'),
+(24, 'Malipharma&co'),
 (8, 'mankind'),
 (2, 'naikdrugs'),
 (9, 'nationalmeds'),
@@ -87,16 +90,19 @@ CREATE TABLE `contact` (
   `cntid` int(5) NOT NULL,
   `cntname` varchar(25) NOT NULL,
   `cntemail` varchar(50) NOT NULL,
-  `cntdesc` varchar(250) NOT NULL
+  `cntdesc` varchar(250) NOT NULL,
+  `cntcode` int(7) NOT NULL,
+  `cntstatus` varchar(200) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contact`
 --
 
-INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`) VALUES
-(10, 'Deep Ahir', 'Deep@gmail.com', 'I want toothbrush'),
-(14, 'Mann Ahir', 'Mann@gmail.com', 'I want hair gel');
+INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`, `cntcode`, `cntstatus`) VALUES
+(18, 'Mann Ahir', 'mann@gmail.com', 'I want gel', 9995, 'yes'),
+(19, 'Mann Ahir', 'mann@gmail.com', 'I want toothbrush', 7229, 'no'),
+(20, 'Mann Ahir', 'mann@gmail.com', 'i want tooth paste', 3146, 'no');
 
 -- --------------------------------------------------------
 
@@ -126,7 +132,8 @@ INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `unit`) V
 (53, 'Beardo face wash', '215', 21, 'facewash2.jpeg', 15),
 (54, 'Nicotex', '140', 12, 'nicotex.jpeg', 12),
 (55, 'clocip', '50', 12, 'powder.png', 10),
-(56, 'Rovor 2.5', '500', 18, 'rovor.jpeg', 10);
+(56, 'Rovor 2.5', '500', 18, 'rovor.jpeg', 10),
+(57, 'Antidandruff Shampoo', '250', 23, 'antidandruf.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -197,25 +204,25 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `registration`
