@@ -9,6 +9,13 @@
     <?php
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
     $qry = mysqli_query($con, "select * from contact");
+    if (isset($_REQUEST['btnsub'])) {
+        $cntid = $_REQUEST['btnsub'];
+        $cntstatus=$_REQUEST['cntstatus'];
+        $sql = "update contact set cntstatus='$cntstatus' where cntid='$cntid'";
+        $res = mysqli_query($con,$sql);
+        header('refresh:0');
+    }
     ?>
     <link rel="stylesheet" href="./css/Admin.css">
 </head>
@@ -23,6 +30,8 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Query</th>
+                    <th>Reply</th>
+                    <th>Handel</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +43,10 @@
                         <td>" . $row['cntname'] . " 
                         <td>" . $row['cntemail'] . " 
                         <td>" . $row['cntdesc'] . " 
+                        <form method='post'>
+                            <td> <input type='text' name='cntstatus' class='form-control' required>
+                            <td><button type='submit' class='btn btn-primary' name='btnsub' value=" . $row['cntid'] . ">Reply</button>
+                        </form>
                         </tr>
                         ";
                     $num++;

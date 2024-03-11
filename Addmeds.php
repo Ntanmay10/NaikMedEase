@@ -48,8 +48,6 @@
                 <label for='company'>Product Company</label>
                 <select name="company">
                     <?php
-                    $con = mysqli_connect("localhost", "root", "");
-                    mysqli_select_db($con, "naikmedease");
                     $result = mysqli_query($con, "SELECT * FROM company");
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "

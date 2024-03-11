@@ -8,8 +8,7 @@
     <?php include_once 'navbar.php'; ?>
     <link rel="stylesheet" href="./css/form.css">
     <?php
-    $con = mysqli_connect("localhost", "root", "");
-    mysqli_select_db($con, "naikmedease");
+    $con = mysqli_connect("localhost", "root", "","naikmedease");
     if (isset($_REQUEST["btnadd"])) {
         $compname = $_REQUEST["compname"];
         $q = "SELECT * FROM company WHERE compname='$compname'";
