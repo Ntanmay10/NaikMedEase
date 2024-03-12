@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 06:07 AM
+-- Generation Time: Mar 12, 2024 at 04:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -102,7 +102,9 @@ CREATE TABLE `contact` (
 INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`, `cntcode`, `cntstatus`) VALUES
 (18, 'Mann Ahir', 'mann@gmail.com', 'I want gel', 9995, 'yes'),
 (19, 'Mann Ahir', 'mann@gmail.com', 'I want toothbrush', 7229, 'no'),
-(20, 'Mann Ahir', 'mann@gmail.com', 'i want tooth paste', 3146, 'no');
+(20, 'Mann Ahir', 'mann@gmail.com', 'i want tooth paste', 3146, 'no'),
+(23, 'Mahek Naik', 'Mahek@gmail.com', 'i want comb', 3059, 'yes'),
+(24, 'Mahek Naik', 'Mahek@gmail.com', 'i want gel', 9589, 'yes');
 
 -- --------------------------------------------------------
 
@@ -216,7 +218,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `product`

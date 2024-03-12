@@ -22,7 +22,7 @@
 
 <body>
     <div class="container">
-        <h2>Contact to be made</h2>
+        <h2>Queries to be answered</h2>
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr>
@@ -38,18 +38,20 @@
                 <?php
                 $num = 1;
                 while ($row = mysqli_fetch_assoc($qry)) {
-                    echo "<tr>
+                    if ($row['cntstatus']=="pending") {
+                        echo "<tr>
                         <td>" . $num . " 
                         <td>" . $row['cntname'] . " 
                         <td>" . $row['cntemail'] . " 
                         <td>" . $row['cntdesc'] . " 
                         <form method='post'>
-                            <td> <input type='text' name='cntstatus' class='form-control' required>
-                            <td><button type='submit' class='btn btn-primary' name='btnsub' value=" . $row['cntid'] . ">Reply</button>
+                        <td> <input type='text' name='cntstatus' class='form-control' required>
+                        <td><button type='submit' class='btn btn-primary' name='btnsub' value=" . $row['cntid'] . ">Reply</button>
                         </form>
                         </tr>
                         ";
-                    $num++;
+                        $num++;
+                    }
                 }
                 ?>
             </tbody>
