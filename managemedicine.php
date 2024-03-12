@@ -35,7 +35,7 @@
             while ($row = mysqli_fetch_assoc($getdta)) {
                 echo "<tr>
                 <th scope='row'>" . $num . "</th>
-                <td> <img src='./medimage/".$row['prdimg']."' alt='Card 1 Image' width='25%'  height='50px'> </td>
+                <td> <img src='./medimage/".$row['prdimg']."' alt='Card ".$num." Image' width='25%'  height='50px'> </td>
                 <td>" . $row['prdnm'] . "</td>
                 <td>" . $row['prdpri'] . "</td>
                 <td>" . $row['unit'] . "</td>
