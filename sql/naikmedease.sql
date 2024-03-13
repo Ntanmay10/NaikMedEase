@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 04:42 AM
+-- Generation Time: Mar 13, 2024 at 05:39 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -104,7 +104,29 @@ INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`, `cntcode`, `cn
 (19, 'Mann Ahir', 'mann@gmail.com', 'I want toothbrush', 7229, 'no'),
 (20, 'Mann Ahir', 'mann@gmail.com', 'i want tooth paste', 3146, 'no'),
 (23, 'Mahek Naik', 'Mahek@gmail.com', 'i want comb', 3059, 'yes'),
-(24, 'Mahek Naik', 'Mahek@gmail.com', 'i want gel', 9589, 'yes');
+(24, 'Mahek Naik', 'Mahek@gmail.com', 'i want gel', 9589, 'yes'),
+(25, 'Mahek Naik', 'Mahek@gmail.com', 'I want brush', 2674, 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `feedid` int(5) NOT NULL,
+  `feedname` varchar(20) NOT NULL,
+  `feedemail` varchar(50) NOT NULL,
+  `feeddesc` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedid`, `feedname`, `feedemail`, `feeddesc`) VALUES
+(1, 'Tanmay Naik', 'tanmay@gmail.com', '5 star'),
+(2, 'Tanmay Naik', 'tanmay@gmail.com', 'Nice');
 
 -- --------------------------------------------------------
 
@@ -185,6 +207,12 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`cntid`);
 
 --
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedid`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -218,7 +246,13 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`

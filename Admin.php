@@ -11,13 +11,19 @@
     $qry = mysqli_query($con, "select * from contact");
     if (isset($_REQUEST['btnsub'])) {
         $cntid = $_REQUEST['btnsub'];
-        $cntstatus=$_REQUEST['cntstatus'];
+        $cntstatus = $_REQUEST['cntstatus'];
         $sql = "update contact set cntstatus='$cntstatus' where cntid='$cntid'";
-        $res = mysqli_query($con,$sql);
+        $res = mysqli_query($con, $sql);
         header('refresh:0');
     }
     ?>
     <link rel="stylesheet" href="./css/Admin.css">
+    <style>
+        hr {
+            width: 80%;
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +44,7 @@
                 <?php
                 $num = 1;
                 while ($row = mysqli_fetch_assoc($qry)) {
-                    if ($row['cntstatus']=="pending") {
+                    if ($row['cntstatus'] == "pending") {
                         echo "<tr>
                         <td>" . $num . " 
                         <td>" . $row['cntname'] . " 
@@ -52,6 +58,36 @@
                         ";
                         $num++;
                     }
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="container">
+        <h2>Feedbacks</h2>
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $feedqry = mysqli_query($con, "select * from feedback");
+                $num = 1;
+                while ($rowfeed = mysqli_fetch_assoc($feedqry)) {
+                    echo "<tr>
+                        <td>" . $num . " 
+                        <td>" . $rowfeed['feedname'] . " 
+                        <td>" . $rowfeed['feedemail'] . " 
+                        <td>" . $rowfeed['feeddesc'] . " 
+                        </tr>
+                        ";
+                    $num++;
                 }
                 ?>
             </tbody>
