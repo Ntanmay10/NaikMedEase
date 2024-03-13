@@ -31,7 +31,7 @@
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" onclick="home();">Home</a></li>
-                        <li><a href="#" onclick="aboutus();">Contact</a></li>
+                        <li><a href="#" onclick="feedback();">Feedback</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,6 +43,11 @@
         </div>
     </footer>
     <script src="./js/nav.js"></script>
+    <script>
+        function feedback() {
+            window.location.href = "feedback.php"
+        }
+    </script>
 </body>
 
 </html>
