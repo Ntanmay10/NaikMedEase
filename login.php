@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Form</title>
   <?php include_once './navbar.php'; ?>
-  <link rel="stylesheet" href="./css/form.css">
   <?php
   $con = mysqli_connect("localhost", "root", "");
   mysqli_select_db($con, "naikmedease");
@@ -31,6 +30,12 @@
     }
   }
   ?>
+  <link rel="stylesheet" href="./css/form.css">
+  <style>
+    .mid{
+      margin-left: 42%;
+    }
+  </style>
 </head>
 
 <body>

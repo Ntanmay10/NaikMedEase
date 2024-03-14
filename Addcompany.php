@@ -25,6 +25,11 @@
     }
     ?>
     <link rel="stylesheet" href="./css/table.css">
+    <style>
+    .mid{
+      margin-left: 45%;
+    }
+  </style>
 </head>
 <body>
     <div class="form-container" method="post">

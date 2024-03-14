@@ -29,6 +29,9 @@
             <div class="carousel-item">
                 <img src="./images/s3.jpg" class="d-block w-100" alt="...">
             </div>
+            <div class="carousel-item">
+                <img src="./images/s4.jpg" class="d-block w-100" height="353px" alt="...">
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

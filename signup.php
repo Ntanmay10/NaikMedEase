@@ -30,6 +30,11 @@
     }
   }
   ?>
+  <style>
+    .mid{
+      margin-left: 41%;
+    }
+  </style>
 </head>
 
 
