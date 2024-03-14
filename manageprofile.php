@@ -37,6 +37,11 @@
         header('location:logout.php');
     }
     ?>
+    <style>
+        .mid{
+            margin-left: 42%;
+        }
+    </style>
 </head>
 
 <body>

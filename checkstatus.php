@@ -9,6 +9,11 @@
     <?php $con = mysqli_connect("localhost", "root", "", "naikmedease"); ?>
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/table.css">
+    <style>
+        .mid{
+            margin-left: 42%;
+        }
+    </style>
 </head>
 <body>
     <div class="form-container" method="post">
