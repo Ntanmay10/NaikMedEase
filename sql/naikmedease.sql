@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2024 at 05:39 AM
+-- Generation Time: Mar 15, 2024 at 10:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,16 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `cartid` int(5) NOT NULL,
   `prdid` int(5) NOT NULL,
-  `regid` int(5) NOT NULL
+  `regid` int(5) NOT NULL,
+  `quantity` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cartid`, `prdid`, `regid`) VALUES
-(49, 54, 47),
-(54, 48, 46);
+INSERT INTO `cart` (`cartid`, `prdid`, `regid`, `quantity`) VALUES
+(6, 58, 46, 1),
+(7, 49, 47, 1);
 
 -- --------------------------------------------------------
 
@@ -63,6 +64,7 @@ INSERT INTO `company` (`compid`, `compname`) VALUES
 (23, 'Chiragpharma&co'),
 (12, 'Cipla ltd.'),
 (4, 'dabur'),
+(25, 'Delta pharma '),
 (16, 'Dove'),
 (22, 'Dove india'),
 (17, 'Ghar soap'),
@@ -105,7 +107,9 @@ INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`, `cntcode`, `cn
 (20, 'Mann Ahir', 'mann@gmail.com', 'i want tooth paste', 3146, 'no'),
 (23, 'Mahek Naik', 'Mahek@gmail.com', 'i want comb', 3059, 'yes'),
 (24, 'Mahek Naik', 'Mahek@gmail.com', 'i want gel', 9589, 'yes'),
-(25, 'Mahek Naik', 'Mahek@gmail.com', 'I want brush', 2674, 'yes');
+(25, 'Mahek Naik', 'Mahek@gmail.com', 'I want brush', 2674, 'yes'),
+(26, 'Tanmay', 'tanmay@gmail.com', 'i want brush', 5604, 'ok'),
+(27, 'dhruv', 'dhruv@gmail.com', 'i want brush', 6676, 'mali jase');
 
 -- --------------------------------------------------------
 
@@ -126,7 +130,23 @@ CREATE TABLE `feedback` (
 
 INSERT INTO `feedback` (`feedid`, `feedname`, `feedemail`, `feeddesc`) VALUES
 (1, 'Tanmay Naik', 'tanmay@gmail.com', '5 star'),
-(2, 'Tanmay Naik', 'tanmay@gmail.com', 'Nice');
+(2, 'Tanmay Naik', 'tanmay@gmail.com', 'Nice'),
+(3, 'Tanmay', 'Tanmay@gmail.com', 'nice'),
+(4, 'mahek', 'mahek@gmAIL.com', 'nicee'),
+(5, 'Meet', 'meet@gmail.com', 'nice UI');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ordertab`
+--
+
+CREATE TABLE `ordertab` (
+  `orderid` int(5) NOT NULL,
+  `cartid` int(5) NOT NULL,
+  `regid` int(5) NOT NULL,
+  `amount` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -140,14 +160,14 @@ CREATE TABLE `product` (
   `prdpri` varchar(10) NOT NULL,
   `compid` int(5) NOT NULL,
   `prdimg` varchar(100) NOT NULL,
-  `unit` int(5) NOT NULL
+  `stock` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `unit`) VALUES
+INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `stock`) VALUES
 (48, 'Dove Shampoo', '150', 16, 'shampoo.jpg', 10),
 (49, 'Diprolite skin cream', '65', 20, 'diprolite.jpeg', 10),
 (50, 'Magic soap', '150', 17, 'soap.jpg', 15),
@@ -157,7 +177,8 @@ INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `unit`) V
 (54, 'Nicotex', '140', 12, 'nicotex.jpeg', 12),
 (55, 'clocip', '50', 12, 'powder.png', 10),
 (56, 'Rovor 2.5', '500', 18, 'rovor.jpeg', 10),
-(57, 'Antidandruff Shampoo', '250', 23, 'antidandruf.jpg', 15);
+(57, 'Antidandruff Shampoo', '250', 23, 'antidandruf.jpg', 15),
+(58, 'Cetaphil cleanser', '675', 25, 'cetaphil.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -213,6 +234,12 @@ ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedid`);
 
 --
+-- Indexes for table `ordertab`
+--
+ALTER TABLE `ordertab`
+  ADD PRIMARY KEY (`orderid`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -234,31 +261,37 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `feedid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `ordertab`
+--
+ALTER TABLE `ordertab`
+  MODIFY `orderid` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `registration`
