@@ -16,7 +16,7 @@
             while ($row = mysqli_fetch_array($q)) {
                 $GLOBALS["prdnm"] = $row['prdnm'];
                 $GLOBALS["prdpri"] = $row['prdpri'];
-                $GLOBALS["prdunit"] = $row['unit'];
+                $GLOBALS["prdunit"] = $row['stock'];
                 $GLOBALS["prdimg"] = $row['prdimg'];
             }
         }
@@ -28,14 +28,14 @@
         $prdid = $_SESSION['prdid'];
         $prdnm = $_REQUEST["prdnm"];
         $prdpri = $_REQUEST["prdpri"];
-        $prdunit = $_REQUEST["prdunit"];
+        $prdstock = $_REQUEST["prdunit"];
         $updfilename = $_FILES["updmedimg"]["name"];
         $updtmpname = $_FILES["updmedimg"]["tmp_name"];
         move_uploaded_file($updtmpname, "medimage/$updfilename");
         $q = "SELECT * FROM product WHERE prdid='$prdid'";
         $t = mysqli_query($con, $q);
         if (mysqli_num_rows($t) > 0) {
-            $updprd = "UPDATE product SET prdnm='$prdnm', prdpri='$prdpri',unit='$prdunit',prdimg='$updfilename' where prdid = '$prdid'";
+            $updprd = "UPDATE product SET prdnm='$prdnm', prdpri='$prdpri',stock='$prdstock',prdimg='$updfilename' where prdid = '$prdid'";
             $done = mysqli_query($con, $updprd);
             if ($done) {
                 header('location:managemedicine.php');

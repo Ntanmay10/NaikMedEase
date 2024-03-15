@@ -23,7 +23,7 @@
                 <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
-                <th scope="col">unit</th>
+                <th scope="col">stock</th>
                 <th scope="col">Handle</th>
             </tr>
         </thead>
@@ -38,7 +38,7 @@
                 <td> <img src='./medimage/".$row['prdimg']."' alt='Card ".$num." Image' width='25%'  height='50px'> </td>
                 <td>" . $row['prdnm'] . "</td>
                 <td>" . $row['prdpri'] . "</td>
-                <td>" . $row['unit'] . "</td>
+                <td>" . $row['stock'] . "</td>
                 <td>
                 <form method='post'>
                 <button type='submit' class='btn btn-primary' name='btnupd' value=" . $row['prdid'] . ">Update</button>

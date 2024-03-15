@@ -28,6 +28,16 @@
 
 <body>
     <div class="container">
+        <button class="btn btn-primary mt-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Manage Data</button>
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <p class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Hello Admin</p>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                
+            </div>
+        </div>
         <h2>Queries to be answered</h2>
         <table class="table table-hover">
             <thead class="table-dark">

@@ -12,7 +12,6 @@
     $getcart = mysqli_query($con, "SELECT * FROM cart WHERE regid=$regid");
     $tot = 0;
     ?>
-    
     <?php
     if (isset($_REQUEST["btndel"])) {
         $cartid = $_REQUEST["btndel"];
@@ -24,44 +23,44 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2>Your Shopping Cart</h2>
-        <table class="table table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>Product</th>
-                    <th>Name</th>
-                    <th>Delete</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while ($row = mysqli_fetch_assoc($getcart)) {
-                    $prdid = $row["prdid"];
-                    $getprd = mysqli_query($con, "select * from product where prdid=$prdid");
-                    while ($prow = mysqli_fetch_array($getprd)) {
-                        $tot = $tot + $prow['prdpri'];
-                        echo "<tr>
-                        <td><img src='./medimage/" . $prow['prdimg'] . "' alt='Card 1 Image' width='35%'  height='100px'>
-                        <td>" . $prow['prdnm'] . " 
-                        <form method='post'>
-                        <td><button class='btn btn-danger' value=" . $row['cartid'] . " name='btndel'>Remove</button>
-                        </form>
-                        <td>" . $prow['prdpri'] . " 
+    <form method='post'>
+        <div class="container">
+            <h2>Your Shopping Cart</h2>
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Delete</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($row = mysqli_fetch_assoc($getcart)) {
+                        $prdid = $row["prdid"];
+                        $getprd = mysqli_query($con, "select * from product where prdid=$prdid");
+                        while ($prow = mysqli_fetch_array($getprd)) {
+                            $tot = $tot + $prow['prdpri'];
+                            echo "<tr>
+                        <td><img src='./medimage/" . $prow['prdimg'] . "' alt='Card 1 Image' width='35%'  height='100px'></td>
+                        <td>" . $prow['prdnm'] . "</td>
+                        <td><button type='submit' class='btn btn-danger' value=" . $row['cartid'] . " name='btndel'>Delete</button></td>
+                        <td>" . $prow['prdpri'] . "</td>
                         </tr>
                         ";
+                        }
                     }
-                }
-                ?>
-                <tr class="total table-info">
-                    <td colspan="3">Total Price : </td>
-                    <td><?php echo $tot ?></td>
-                </tr>
-            </tbody>
-        </table>
-        <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
-    </div>
+                    ?>
+                    <tr class="total table-info">
+                        <td colspan="3">Total Price : </td>
+                        <td><?php echo $tot ?></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-primary checkout-btn" name="btnord" value="<?php echo $regid ?>">Proceed to Checkout</button>
+        </div>
+    </form>
 </body>
 
 </html>
