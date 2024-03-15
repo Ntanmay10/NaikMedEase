@@ -22,7 +22,7 @@
         if (mysqli_num_rows($t) > 0) {
             echo "<script>alert('Product already exists')</script>";
         } else {
-            $addprd = "insert into product(prdnm,prdpri,compid,prdimg,unit) values('$prdnm','$prdpri','$compid','$filename','$prdunit')";
+            $addprd = "insert into product(prdnm,prdpri,compid,prdimg,stock) values('$prdnm','$prdpri','$compid','$filename','$prdunit')";
             $done = mysqli_query($con, $addprd);
             if ($done) {
                 echo "<script>alert('Product inserted')</script>";

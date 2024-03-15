@@ -7,6 +7,7 @@
     <title>Naik MedEase</title>
     <?php include_once 'navbar.php'; ?>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/feedback.css">
     <style>
         .msg {
             width: 50%;
@@ -52,7 +53,24 @@
     <div class="iconimage">
         <img src="./Images/Iconbar.jpg" alt="unclickable icons" />
     </div>
-
+    <div class="feedback-container">
+        <h2>User Feedback</h2>
+        <div class="feedback">
+            <?php
+            $con=mysqli_connect("localhost","root","","naikmedease");
+            $feedbck=mysqli_query($con,"select * from feedback");
+            while ($row = mysqli_fetch_array($feedbck)) {
+                echo"
+                <div class='user-feedback'>
+                <p class='feedback-text'>".$row['feeddesc']."</p>
+                <p class='user-info'>-".$row['feedname']."</p>
+            </div><hr>
+                ";
+            }
+            ?>
+            
+        </div>
+    </div>
     <?php include_once 'footer.php'; ?>
 </body>
 
