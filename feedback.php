@@ -23,6 +23,11 @@
     }
     ?>
     <link rel="stylesheet" href="./css/form.css">
+    <style>
+        .mid{
+            margin-left: 40%;
+        }
+    </style>
 </head>
 
 <body>
