@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Profile</title>
     <?php include_once './navbar.php' ?>
-    <link rel="stylesheet" href="./css/form.css">
     <?php
     if (empty($_SESSION['usernm'])) {
         header('location:login.php');
@@ -37,8 +36,9 @@
         header('location:logout.php');
     }
     ?>
+    <link rel="stylesheet" href="./css/form.css">
     <style>
-        .mid{
+        .mid {
             margin-left: 42%;
         }
     </style>
@@ -50,14 +50,13 @@
         <form id="registrationForm" method="post">
             <div class="form-group">
                 <label for="fullName">Full Name</label>
-                <input type="text" class="form-control" id="fullName" name="fullnm" value="<?php getdata(); echo $fullnm ?>" required>
+                <input type="text" class="form-control" id="fullName" name="fullnm" value="<?php getdata();
+                                                                                            echo $fullnm ?>" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" name="passwd" 
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                value="<?php getdata(); echo $passwd ?>" required>
+                <input type="text" class="form-control" id="password" name="passwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php getdata();
+                                                                                                                                                                                                                                                            echo $passwd ?>" required>
             </div>
             <button type="submit" name="btnupd" class="btn btn-primary btn-block mid">Update</button>
         </form>

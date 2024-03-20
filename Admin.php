@@ -16,93 +16,64 @@
         $res = mysqli_query($con, $sql);
         header('refresh:0');
     }
+
+    if (isset($_REQUEST['showuser'])) {
+        $userdata=mysqli_query($con,"SELECT * FROM registration ORDER BY regid");
+    }
     ?>
     <link rel="stylesheet" href="./css/Admin.css">
     <style>
-        hr {
-            width: 80%;
-            margin: auto;
+        .center{
+            align-items: center;
+            justify-content: center;
+            margin-top: 1%;
+            margin-bottom: 1%;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <button class="btn btn-primary mt-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Manage Data</button>
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <p class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Hello Admin</p>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <form method='post'>
+        <div class="container">
+            <div class="nav center gap-5">
+                <a href="userfeedback.php" type="submit" class="btn btn-dark">User Feedback</a>
+                <a href="userinfo.php" type="submit" class="btn btn-dark">Manage User</a>
+                <a href="queries.php" type="submit" class="btn btn-dark">User Queries Manager</a>
             </div>
-            <div class="offcanvas-body">
-                
-            </div>
-        </div>
-        <h2>Queries to be answered</h2>
-        <table class="table table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>Sr. No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Query</th>
-                    <th>Reply</th>
-                    <th>Handel</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $num = 1;
-                while ($row = mysqli_fetch_assoc($qry)) {
-                    if ($row['cntstatus'] == "pending") {
-                        echo "<tr>
+            <h2>Queries to be answered</h2>
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Sr. No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Query</th>
+                        <th>Reply</th>
+                        <th>Handel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $num = 1;
+                    while ($row = mysqli_fetch_assoc($qry)) {
+                        if ($row['cntstatus'] == "pending") {
+                            echo "<tr>
                         <td>" . $num . " 
                         <td>" . $row['cntname'] . " 
                         <td>" . $row['cntemail'] . " 
                         <td>" . $row['cntdesc'] . " 
-                        <form method='post'>
                         <td> <input type='text' name='cntstatus' class='form-control' required>
                         <td><button type='submit' class='btn btn-primary' name='btnsub' value=" . $row['cntid'] . ">Reply</button>
-                        </form>
                         </tr>
                         ";
-                        $num++;
+                            $num++;
+                        }
                     }
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-    <hr>
-    <div class="container">
-        <h2>Feedbacks</h2>
-        <table class="table table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>Sr. No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Feedback</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $feedqry = mysqli_query($con, "select * from feedback");
-                $num = 1;
-                while ($rowfeed = mysqli_fetch_assoc($feedqry)) {
-                    echo "<tr>
-                        <td>" . $num . " 
-                        <td>" . $rowfeed['feedname'] . " 
-                        <td>" . $rowfeed['feedemail'] . " 
-                        <td>" . $rowfeed['feeddesc'] . " 
-                        </tr>
-                        ";
-                    $num++;
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </form>
 </body>
 
 </html>

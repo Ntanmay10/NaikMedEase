@@ -16,13 +16,14 @@
     $email = $_REQUEST["email"];
     $usernm = $_REQUEST["usernm"];
     $passwd = $_REQUEST["passwd"];
+    $secucode = $_REQUEST["secucode"];
 
     $chk = "SELECT * FROM registration WHERE email='$email' OR usernm='$usernm'";
     $t = mysqli_query($con, $chk);
     if (mysqli_num_rows($t) > 0) {
       echo "<script>alert('Email or Username already Exists')</script>";
     } else {
-      $q = "insert into registration (fullnm,usernm,email,passwd) values ('$fullnm','$usernm','$email','$passwd')";
+      $q = "insert into registration (fullnm,usernm,email,passwd,secucode) values ('$fullnm','$usernm','$email','$passwd','$secucode')";
       $exeqr = mysqli_query($con, $q);
       if ($exeqr) {
         header('location:login.php');
@@ -60,6 +61,10 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="passwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number
         and one uppercase and lowercase letter, and at least 8 or more characters" required>
+      </div>
+      <div class="form-group">
+        <label for="secucode">Security Code</label>
+        <input type="text" class="form-control" id="secucode" name="secucode" required>
       </div>
       <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Sign Up</button>
     </form>
