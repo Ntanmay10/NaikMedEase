@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2024 at 10:53 AM
+-- Generation Time: Mar 20, 2024 at 05:23 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,14 +34,6 @@ CREATE TABLE `cart` (
   `quantity` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cartid`, `prdid`, `regid`, `quantity`) VALUES
-(6, 58, 46, 1),
-(7, 49, 47, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -59,6 +51,7 @@ CREATE TABLE `company` (
 
 INSERT INTO `company` (`compid`, `compname`) VALUES
 (13, 'Abbota'),
+(26, 'Albatros'),
 (14, 'apollopharma'),
 (21, 'beardo'),
 (23, 'Chiragpharma&co'),
@@ -102,14 +95,8 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`, `cntcode`, `cntstatus`) VALUES
-(18, 'Mann Ahir', 'mann@gmail.com', 'I want gel', 9995, 'yes'),
-(19, 'Mann Ahir', 'mann@gmail.com', 'I want toothbrush', 7229, 'no'),
-(20, 'Mann Ahir', 'mann@gmail.com', 'i want tooth paste', 3146, 'no'),
-(23, 'Mahek Naik', 'Mahek@gmail.com', 'i want comb', 3059, 'yes'),
-(24, 'Mahek Naik', 'Mahek@gmail.com', 'i want gel', 9589, 'yes'),
-(25, 'Mahek Naik', 'Mahek@gmail.com', 'I want brush', 2674, 'yes'),
-(26, 'Tanmay', 'tanmay@gmail.com', 'i want brush', 5604, 'ok'),
-(27, 'dhruv', 'dhruv@gmail.com', 'i want brush', 6676, 'mali jase');
+(1, 'Tanmay Naik', 'findtanmay10@gmail.com', 'I want Rovor 2.5', 1857, 'You will get it'),
+(2, 'Mahek', 'mahek@gmail.com', 'i want meds', 3440, 'ok');
 
 -- --------------------------------------------------------
 
@@ -129,11 +116,7 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feedid`, `feedname`, `feedemail`, `feeddesc`) VALUES
-(1, 'Tanmay Naik', 'tanmay@gmail.com', '5 star'),
-(2, 'Tanmay Naik', 'tanmay@gmail.com', 'Nice'),
-(3, 'Tanmay', 'Tanmay@gmail.com', 'nice'),
-(4, 'mahek', 'mahek@gmAIL.com', 'nicee'),
-(5, 'Meet', 'meet@gmail.com', 'nice UI');
+(1, 'Meet Patel', 'meet@gmail.com', 'User friendly UI');
 
 -- --------------------------------------------------------
 
@@ -168,17 +151,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `stock`) VALUES
-(48, 'Dove Shampoo', '150', 16, 'shampoo.jpg', 10),
-(49, 'Diprolite skin cream', '65', 20, 'diprolite.jpeg', 10),
-(50, 'Magic soap', '150', 17, 'soap.jpg', 15),
-(51, 'syrup', '200', 3, 'syrup.jpeg', 10),
-(52, 'wildstone face wash', '180', 19, 'facewash.jpeg', 10),
-(53, 'Beardo face wash', '215', 21, 'facewash2.jpeg', 15),
-(54, 'Nicotex', '140', 12, 'nicotex.jpeg', 12),
-(55, 'clocip', '50', 12, 'powder.png', 10),
-(56, 'Rovor 2.5', '500', 18, 'rovor.jpeg', 10),
-(57, 'Antidandruff Shampoo', '250', 23, 'antidandruf.jpg', 15),
-(58, 'Cetaphil cleanser', '675', 25, 'cetaphil.jpg', 15);
+(1, 'Dove Shampoo', '150', 16, 'shampoo.jpg', 10);
 
 -- --------------------------------------------------------
 
@@ -192,17 +165,17 @@ CREATE TABLE `registration` (
   `usernm` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
   `passwd` varchar(15) NOT NULL,
-  `usertyp` varchar(5) DEFAULT 'User'
+  `usertyp` varchar(5) DEFAULT 'User',
+  `secucode` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`regid`, `fullnm`, `usernm`, `email`, `passwd`, `usertyp`) VALUES
-(26, 'Tanmay Amar Naik', 'Admin', 'findtanmay10@gmail.com', 'Tanmay@2510', 'Admin'),
-(46, 'Mahek Naik', 'mahek21', 'mahek@gmail.com', 'Mahek@2110', 'User'),
-(47, 'Chirag Patel', 'Chixy17', 'chixy@gmail.com', 'Chixy@1708', 'User');
+INSERT INTO `registration` (`regid`, `fullnm`, `usernm`, `email`, `passwd`, `usertyp`, `secucode`) VALUES
+(1, 'Tanmay Naik', 'Admin', 'findtanmay10@gmail.com', 'Admin@2510', 'Admin', '2510'),
+(2, 'Mahek Naik', 'Mahek21', 'Maheknaik021@gmail.com', 'Mahek@2110', 'User', '2110');
 
 --
 -- Indexes for dumped tables
@@ -261,25 +234,25 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `compid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `feedid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ordertab`
@@ -291,13 +264,13 @@ ALTER TABLE `ordertab`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `regid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `regid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -52,7 +52,7 @@
       </div>
       <div class="form-group">
         <div class="d-flex justify-content-between align-items-center">
-          <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+          <a href="updatepassword.php" id="forgotPasswordLink">Forgot Password?</a>
           <a href="#" id="signUpLink" onclick="signup();">Sign Up</a>
         </div>
       </div>
