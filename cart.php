@@ -18,6 +18,11 @@
         mysqli_query($con, "DELETE FROM cart WHERE cartid='$cartid'");
         header('refresh:0');
     }
+
+    if (isset($_REQUEST["btnord"])) {
+        $_SESSION['order'] = $_REQUEST["btnord"];
+        header('location:order.php');
+    }
     ?>
     <link rel="stylesheet" href="./css/cart.css">
 </head>
@@ -54,11 +59,16 @@
                     ?>
                     <tr class="total table-info">
                         <td colspan="3">Total Price : </td>
-                        <td><?php echo $tot ?></td>
+                        <td>
+                            <?php
+                            echo $tot;
+                            $_SESSION['total']=$tot;
+                            ?>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <button class="btn btn-primary checkout-btn" name="btnord" value="<?php echo $regid ?>">Proceed to Checkout</button>
+            <button class="btn btn-primary checkout-btn" name="btnord" value="<?php echo $regid ?>">Place order</button>
         </div>
     </form>
 </body>
