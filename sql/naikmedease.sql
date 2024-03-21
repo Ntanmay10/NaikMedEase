@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2024 at 05:23 AM
+-- Generation Time: Mar 21, 2024 at 05:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -90,14 +90,6 @@ CREATE TABLE `contact` (
   `cntstatus` varchar(200) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`, `cntcode`, `cntstatus`) VALUES
-(1, 'Tanmay Naik', 'findtanmay10@gmail.com', 'I want Rovor 2.5', 1857, 'You will get it'),
-(2, 'Mahek', 'mahek@gmail.com', 'i want meds', 3440, 'ok');
-
 -- --------------------------------------------------------
 
 --
@@ -111,13 +103,6 @@ CREATE TABLE `feedback` (
   `feeddesc` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`feedid`, `feedname`, `feedemail`, `feeddesc`) VALUES
-(1, 'Meet Patel', 'meet@gmail.com', 'User friendly UI');
-
 -- --------------------------------------------------------
 
 --
@@ -126,9 +111,10 @@ INSERT INTO `feedback` (`feedid`, `feedname`, `feedemail`, `feeddesc`) VALUES
 
 CREATE TABLE `ordertab` (
   `orderid` int(5) NOT NULL,
-  `cartid` int(5) NOT NULL,
   `regid` int(5) NOT NULL,
-  `amount` int(5) NOT NULL
+  `orddate` varchar(12) NOT NULL,
+  `prdid` int(5) NOT NULL,
+  `qty` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -145,13 +131,6 @@ CREATE TABLE `product` (
   `prdimg` varchar(100) NOT NULL,
   `stock` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `stock`) VALUES
-(1, 'Dove Shampoo', '150', 16, 'shampoo.jpg', 10);
 
 -- --------------------------------------------------------
 
@@ -234,7 +213,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cartid` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -246,13 +225,13 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cntid` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `feedid` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ordertab`
@@ -264,7 +243,7 @@ ALTER TABLE `ordertab`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prdid` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `registration`
