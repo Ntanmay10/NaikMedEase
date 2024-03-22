@@ -26,8 +26,8 @@
                 $delcart=mysqli_query($con,"DELETE from CART where prdid='$prdid' and regid='$regid'");
             }
         }
-        $tot=0;
-        header('refresh:0');
+        $tot = $_SESSION['reciv'];
+        header('location:payment.php');
     }
     ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -108,6 +108,8 @@
                         <?php
                         $net_total = $befdisc - $disc;
                         echo $net_total . "&#8377";
+                        $recivable=floor($net_total);
+                        $_SESSION['reciv']=$recivable;
                         ?>
                     </h3>
                     <form method="post">
