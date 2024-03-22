@@ -20,8 +20,13 @@
     }
 
     if (isset($_REQUEST["btnord"])) {
-        $_SESSION['order'] = $_REQUEST["btnord"];
-        header('location:order.php');
+        if ($_SESSION['total']==0) {
+            # code...
+        }else{
+
+            $_SESSION['order'] = $_REQUEST["btnord"];
+            header('location:order.php');
+        }
     }
     ?>
     <link rel="stylesheet" href="./css/cart.css">
@@ -62,7 +67,7 @@
                         <td>
                             <?php
                             echo $tot;
-                            $_SESSION['total']=$tot;
+                            $_SESSION['total'] = $tot;
                             ?>
                         </td>
                     </tr>
