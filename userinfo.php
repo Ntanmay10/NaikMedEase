@@ -10,29 +10,35 @@
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
     ?>
     <style>
-        h2{
+        h2 {
             text-align: center;
             margin-top: 2%;
         }
-        table{
+
+        table {
             text-align: center;
         }
+
         .middle {
             margin-left: 35%;
             margin-top: 1%;
         }
     </style>
+    <link rel="stylesheet" href="./css/vieworder.css">
 </head>
 
 <body>
-<nav class="w-25 middle">
-        <div class="input-group ml-5">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">@</span>
+    <div class="box">
+        <nav>
+            <div class="lbl">Search</div>
+            <div class="input-group ml-5">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input type="text" class="form-control w-25" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
             </div>
-            <input type="text" class="form-control" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-    </nav>
+        </nav>
+    </div>
     <div class="container">
         <h2>User</h2>
         <table class="table table-hover">

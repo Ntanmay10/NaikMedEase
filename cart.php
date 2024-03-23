@@ -21,7 +21,7 @@
 
     if (isset($_REQUEST["btnupd"])) {
         $cartid = $_REQUEST["btnupd"];
-        $qty = $_REQUEST["qty_".$cartid];
+        $qty = $_REQUEST["qty_" . $cartid];
         mysqli_query($con, "UPDATE cart SET quantity='$qty' WHERE cartid='$cartid'");
         header('refresh:0');
     }
@@ -64,14 +64,14 @@
                             echo "<tr>
                                 <td><img src='./medimage/" . $prow['prdimg'] . "' alt='Card 1 Image' width='35%'  height='100px'></td>
                                 <td>" . $prow['prdnm'] . "</td>
-                                <td><input type='text' class='form-control w-25' value='".$row['quantity']."' name='qty_" . $row['cartid'] . "'></td>
+                                <td><input type='text' class='form-control w-25' value='" . $row['quantity'] . "' name='qty_" . $row['cartid'] . "'></td>
                                 <td><button type='submit' class='btn btn-success' value=" . $row['cartid'] . " name='btnupd'>Update</button></td>
                                 <td><button type='submit' class='btn btn-danger' value=" . $row['cartid'] . " name='btndel'>Delete</button></td>
                                 <td>" . $prow['prdpri'] * $row['quantity']  . "</td>
                                 </tr>";
                         }
                     }
-                    
+
                     ?>
                     <tr class="total table-info">
                         <td colspan="5">Total Price : </td>

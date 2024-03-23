@@ -14,7 +14,13 @@
   if (isset($_REQUEST['btncart'])) {
     $regid = $_SESSION['regid'];
     $prdid = $_REQUEST['btncart'];
-    $addtocart = mysqli_query($con, "insert into cart(prdid,regid) values($prdid,$regid)");
+    $sql = "SELECT * FROM cart WHERE prdid= '$prdid' AND regid='$regid'";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows( $result) > 0) {
+      echo "<script>alert('Product already added to Cart') </script>";
+    } else {
+      $addtocart = mysqli_query($con, "insert into cart(prdid,regid) values($prdid,$regid)");
+    }
   }
 
   if (isset($_REQUEST['btnbuy'])) {

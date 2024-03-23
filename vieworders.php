@@ -26,62 +26,45 @@
         // header('refresh:0');
     }
     ?>
-    <style>
-        h2 {
-            text-align: center;
-        }
-
-        table {
-            text-align: center;
-        }
-
-        .middle {
-            margin-left: 36%;
-            margin-top: 1%;
-        }
-
-        .middle2 {
-            margin-left: 37%;
-            margin-top: 1%;
-        }
-
-        .middle3 {
-            margin-left: 7%;
-            margin-top: 1%;
-        }
-        .info{
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/vieworder.css">
     <link rel="stylesheet" href="./css/form.css">
 </head>
 
 <body>
     <form action="" method="post">
-        <nav class="w-25 middle">
-            <div class="input-group ml-5">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">@</span>
+        <div class="box">
+            <nav>
+                <div class="lbl">Search</div>
+                <div class="input-group ml-5">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <input type="text" class="form-control w-25" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                <input type="text" class="form-control" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </nav>
+        </div>
+        </div>
+        <div class="box2">
+            <div class="top">
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="date" class="form-control" name="sdate" value="">
+                </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="date" class="form-control" name="edate" value="">
+                </div>
             </div>
-        </nav>
-        <div class="container middle2">
-            <div class="form-group w-25">
-                <label>Start Date</label>
-                <input type="date" class="form-control" name="sdate" value="">
-            </div>
-            <div class="form-group w-25">
-                <label>End Date</label>
-                <input type="date" class="form-control" name="edate" value="">
-            </div>
-            <div class="form-group middle3">
-                <label>&nbsp; </label>
-                <input type="submit" class="btn btn-outline-warning" name="btnfilter" value="Filter">
-                <label>&nbsp; </label>
-                <input type="submit" class="btn btn-outline-warning" name="btnall" value="All">
+            <div class="bott">
+                <div class="form-group middle3">
+                    <label>&nbsp; </label>
+                    <input type="submit" class="btn btn-outline-warning" name="btnfilter" value="Filter">
+                    <label>&nbsp; </label>
+                    <input type="submit" class="btn btn-outline-warning" name="btnall" value="All">
+                </div>
             </div>
         </div>
+
         <div class="container">
             <h2>Orders</h2>
             <table class="table table-hover">
@@ -97,13 +80,13 @@
                 </thead>
                 <tbody id="myTable">
                     <?php
-                    $tot=0;
+                    $tot = 0;
                     while ($rw = mysqli_fetch_array($filterrec)) {
                         $getprd = mysqli_query($con, "SELECT * FROM product WHERE prdid='$rw[prdid]'");
                         while ($rowprd = mysqli_fetch_array($getprd)) {
                             $getuser = mysqli_query($con, "SELECT * FROM registration  WHERE regid='$rw[regid]'");
                             while ($row = mysqli_fetch_array($getuser)) {
-                                $tot=$tot+($rw['qty'] * $rowprd['prdpri'] );
+                                $tot = $tot + ($rw['qty'] * $rowprd['prdpri']);
                                 echo ('<tr>');
                                 echo ('<td>' . $rw['regid'] . '</td>');
                                 echo ('<td>' . $rw['orddate'] . '</td>');
@@ -116,11 +99,11 @@
                         }
                     }
                     ?>
-                    <tr>
+                    <!-- <tr>
                         <td class="infomid">Final</td>
                         <td colspan="4"></td>
                         <td  class="infomid"><?php echo $tot ?></td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
