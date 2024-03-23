@@ -22,19 +22,21 @@
             margin-top: 1%;
         }
     </style>
+    <link rel="stylesheet" href="./css/vieworder.css">
 </head>
 
 <body>
-    <nav class="w-25 middle">
-        <form class="form-inline">
-            <div class="input-group ml-5">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">@</span>
+<div class="box">
+            <nav>
+                <div class="lbl">Search</div>
+                <div class="input-group ml-5">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <input type="text" class="form-control w-25" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                <input type="text" class="form-control" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-        </form>
-    </nav>
+            </nav>
+        </div>
     <div class="container">
         <h2>Feedbacks</h2>
         <table class="table table-hover">
