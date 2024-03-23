@@ -36,6 +36,7 @@
                 <a href="userinfo.php" type="submit" class="btn btn-dark">Manage User</a>
                 <a href="vieworders.php" type="submit" class="btn btn-dark">View Orders</a>
                 <a href="queries.php" type="submit" class="btn btn-dark">User Queries Manager</a>
+                <a href="addsubadmin.php" type="submit" class="btn btn-dark">Add Sub-Admin</a>
             </div>
             <h2>Queries to be answered</h2>
             <table class="table table-hover">
