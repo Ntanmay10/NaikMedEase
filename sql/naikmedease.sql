@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 22, 2024 at 05:23 PM
+-- Generation Time: Mar 23, 2024 at 04:54 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `regid` int NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`cartid`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -76,17 +76,15 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `cntcode` int NOT NULL,
   `cntstatus` varchar(200) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'pending',
   PRIMARY KEY (`cntid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contact`
 --
 
 INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`, `cntcode`, `cntstatus`) VALUES
-(1, 'Yash Mehta', 'yash@gmail.com', 'I want diprolite', 8539, 'pending'),
-(2, 'meet patel', 'meet@gmail.com', 'I want azitromycyne', 2435, 'pending'),
-(3, 'Dhruv patel', 'dhruv@gmail.com', 'I want soframycine', 8132, 'pending'),
-(4, 'Poojan Naik', 'Poojan@gmail.com', 'I want salisia KT', 7055, 'pending');
+(1, 'Yash Mehta', 'yash@gmail.com', 'i want something\r\n', 7758, 'ok'),
+(2, 'meet patel', 'meet@gmail.com', 'i want', 6969, 'ok');
 
 -- --------------------------------------------------------
 
@@ -125,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `ordertab` (
   `orddate` varchar(12) COLLATE utf8mb4_general_ci NOT NULL,
   `prdid` int NOT NULL,
   `qty` int NOT NULL,
+  `addrs` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
