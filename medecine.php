@@ -16,6 +16,11 @@
     $prdid = $_REQUEST['btncart'];
     $addtocart = mysqli_query($con, "insert into cart(prdid,regid) values($prdid,$regid)");
   }
+
+  if (isset($_REQUEST['btnbuy'])) {
+    $_SESSION['prdid'] = $_REQUEST['btnbuy'];
+    header('location:buynow.php');
+  }
   ?>
 </head>
 
@@ -32,6 +37,7 @@
                 <p class='card-text'>" . $row['prdnm'] . "</p>
                 <form method='post'>
                 <button type='submit' class='btn btn-primary' value=" . $row['prdid'] . " name='btncart'>Add to cart</button>
+                <button type='submit' class='btn btn-success mt-1' value=" . $row['prdid'] . " name='btnbuy'>Buy Now</button>
                 </form>
               </div>
             </div>";

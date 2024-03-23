@@ -9,7 +9,7 @@
   $con=mysqli_connect("localhost","root","","naikmedease");
   if (isset($_REQUEST['subpay'])) {
     $transcode=$_REQUEST['transcode'];
-    $amount = $_SESSION["total"];
+    $amount = $_SESSION["reciv"];
     $regid=$_SESSION["regid"];
     $saverec=mysqli_query($con,"insert into payment(transcode,amount,regid) values ('$transcode','$amount','$regid')");
     header('location:thankyou.php');
