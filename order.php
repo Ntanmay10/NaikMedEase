@@ -22,6 +22,7 @@
             $prdid = $row2['prdid'];
             $addrs = $_REQUEST['address'];
             $qty = $row2['quantity'];
+            $updateStock = mysqli_query($con, "UPDATE product SET stock = stock - $qty WHERE prdid = '$prdid'");
             $placeorder = mysqli_query($con, "INSERT INTO ordertab(regid,orddate,prdid,qty,addrs) VALUES('$regid','$orddate','$prdid','$qty','$addrs')");
             if ($placeorder) {
                 $delcart = mysqli_query($con, "DELETE from CART where prdid='$prdid' and regid='$regid'");
