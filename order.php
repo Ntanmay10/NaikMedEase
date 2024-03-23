@@ -20,10 +20,11 @@
             $orddate = date("d.m.Y");
             $regid = $_SESSION['order'];
             $prdid = $row2['prdid'];
+            $addrs = $_REQUEST['address'];
             $qty = $row2['quantity'];
-            $placeorder=mysqli_query($con,"INSERT INTO ordertab(regid,orddate,prdid,qty) VALUES('$regid','$orddate','$prdid','$qty')");
+            $placeorder = mysqli_query($con, "INSERT INTO ordertab(regid,orddate,prdid,qty,addrs) VALUES('$regid','$orddate','$prdid','$qty','$addrs')");
             if ($placeorder) {
-                $delcart=mysqli_query($con,"DELETE from CART where prdid='$prdid' and regid='$regid'");
+                $delcart = mysqli_query($con, "DELETE from CART where prdid='$prdid' and regid='$regid'");
             }
         }
         $tot = $_SESSION['reciv'];
@@ -108,11 +109,15 @@
                         <?php
                         $net_total = $befdisc - $disc;
                         echo $net_total . "&#8377";
-                        $recivable=floor($net_total);
-                        $_SESSION['reciv']=$recivable;
+                        $recivable = floor($net_total);
+                        $_SESSION['reciv'] = $recivable;
                         ?>
                     </h3>
                     <form method="post">
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <textarea class="form-control" id="address" name="address" placeholder="Enter your address" required></textarea>
+                        </div>
                         <button class="btn btn-success btn-block mt-3" name="placeord">Proceed to Checkout</button>
                     </form>
                 </div>

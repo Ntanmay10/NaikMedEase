@@ -20,10 +20,22 @@
             text-align: center;
             margin-top: 1%;
         }
+        .middle {
+            margin-left: 35%;
+            margin-top: 1%;
+        }
     </style>
 </head>
 
 <body>
+<nav class="w-25 middle">
+        <div class="input-group ml-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <input type="text" class="form-control" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+    </nav>
     <h2>User Queries</h2>
     <table class="table table-hover text-center format rounded">
         <thead class="table-dark">
@@ -34,7 +46,7 @@
                 <th scope="col">Status</th>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody class="table-group-divider" id="myTable">
             <?php
                 $num = 1;
                 while ($row = mysqli_fetch_assoc($t)) {
@@ -50,6 +62,20 @@
             ?>
         </tbody>
     </table>
+    <script src="./js/nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

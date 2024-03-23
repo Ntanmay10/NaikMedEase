@@ -16,14 +16,10 @@
         $res = mysqli_query($con, $sql);
         header('refresh:0');
     }
-
-    if (isset($_REQUEST['showuser'])) {
-        $userdata=mysqli_query($con,"SELECT * FROM registration ORDER BY regid");
-    }
     ?>
     <link rel="stylesheet" href="./css/Admin.css">
     <style>
-        .center{
+        .center {
             align-items: center;
             justify-content: center;
             margin-top: 1%;
@@ -63,7 +59,7 @@
                         <td>" . $row['cntname'] . " 
                         <td>" . $row['cntemail'] . " 
                         <td>" . $row['cntdesc'] . " 
-                        <td> <input type='text' name='cntstatus' class='form-control' required>
+                        <td> <input type='text' name='cntstatus' class='form-control'>
                         <td><button type='submit' class='btn btn-primary' name='btnsub' value=" . $row['cntid'] . ">Reply</button>
                         </tr>
                         ";

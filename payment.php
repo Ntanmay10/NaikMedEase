@@ -29,7 +29,7 @@
       </div>
       <form>
           <div class="form-group">
-            <input type="text" class="form-control" id="transactionId" placeholder="Enter Transaction ID" name="transcode" required>
+            <input type="text" class="form-control" id="transactionId" placeholder="Enter Transaction ID" name="transcode" pattern="[0-9]{15}" title="Enter the 15 digit transaction id" required>
           </div>
           <button type="submit" class="btn btn-primary mb-3 form-control" name="subpay">Submit Payment</button>
       </form>
