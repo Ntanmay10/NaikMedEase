@@ -15,8 +15,9 @@
     function getdata()
     {
         $con = mysqli_connect("localhost", "root", "", "naikmedease");
+        $regid = $_SESSION['regid'];
         $usernm = $_SESSION['usernm'];
-        $q = mysqli_query($con, "select * from registration where usernm = '$usernm'");
+        $q = mysqli_query($con, "select * from registration where regid = '$regid'");
         if ($q) {
             while ($row = mysqli_fetch_array($q)) {
                 $GLOBALS["fullnm"] = $row['fullnm'];
