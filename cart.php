@@ -22,14 +22,24 @@
     if (isset($_REQUEST["btnupd"])) {
         $cartid = $_REQUEST["btnupd"];
         $qty = $_REQUEST["qty_" . $cartid];
-        mysqli_query($con, "UPDATE cart SET quantity='$qty' WHERE cartid='$cartid'");
-        header('refresh:0');
-    }
+        $getCartInfo = mysqli_query($con, "SELECT * FROM cart WHERE cartid='$cartid'");
+        $cartInfo = mysqli_fetch_assoc($getCartInfo);
+        $prdid = $cartInfo['prdid'];
+        $getProductInfo = mysqli_query($con, "SELECT stock FROM product WHERE prdid='$prdid'");
+        $productInfo = mysqli_fetch_assoc($getProductInfo);
+        $availableStock = $productInfo['stock'];
 
+        if ($qty > $availableStock) {
+            echo "<script>alert('Maximum available quantity for this product is $availableStock');</script>";
+        } else {
+            // Update cart if the entered quantity is within the available stock
+            mysqli_query($con, "UPDATE cart SET quantity='$qty' WHERE cartid='$cartid'");
+            header('refresh:0');
+        }
+    }
 
     if (isset($_REQUEST["btnord"])) {
         if ($_SESSION['total'] == 0) {
-            # code...
         } else {
             $_SESSION['order'] = $_REQUEST["btnord"];
             header('location:order.php');
