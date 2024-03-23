@@ -19,11 +19,19 @@
         header('refresh:0');
     }
 
-    if (isset($_REQUEST["btnord"])) {
-        if ($_SESSION['total']==0) {
-            # code...
-        }else{
+    // if (isset($_REQUEST["btnupd"])) {
+    //     $cartid = $_REQUEST["btnupd"];
+    //     $qty = $_REQUEST["qty"];
+    //     mysqli_query($con, "UPDATE cart SET quantity='$qty' WHERE cartid='$cartid'");
+    //     header('refresh:0');
+    // }
+    // <td><input type='text' class='form-control' value=" . $row['quantity'] . " name='qty'></td>
+    // <td><button type='submit' class='btn btn-success' value=" . $row['cartid'] . " name='btnupd'>Update</button></td>
 
+    if (isset($_REQUEST["btnord"])) {
+        if ($_SESSION['total'] == 0) {
+            # code...
+        } else {
             $_SESSION['order'] = $_REQUEST["btnord"];
             header('location:order.php');
         }
@@ -41,6 +49,8 @@
                     <tr>
                         <th>Product</th>
                         <th>Name</th>
+                        <!-- <th>Quantity</th> -->
+                        <!-- <th>Update</th> -->
                         <th>Delete</th>
                         <th>Price</th>
                     </tr>
@@ -51,14 +61,13 @@
                         $prdid = $row["prdid"];
                         $getprd = mysqli_query($con, "select * from product where prdid=$prdid");
                         while ($prow = mysqli_fetch_array($getprd)) {
-                            $tot = $tot + $prow['prdpri'];
+                            $tot = $tot + $prow['prdpri'] * $row['quantity'];
                             echo "<tr>
                         <td><img src='./medimage/" . $prow['prdimg'] . "' alt='Card 1 Image' width='35%'  height='100px'></td>
                         <td>" . $prow['prdnm'] . "</td>
                         <td><button type='submit' class='btn btn-danger' value=" . $row['cartid'] . " name='btndel'>Delete</button></td>
-                        <td>" . $prow['prdpri'] . "</td>
-                        </tr>
-                        ";
+                        <td>" . $prow['prdpri'] * $row['quantity']  . "</td>
+                        </tr>";
                         }
                     }
                     ?>
