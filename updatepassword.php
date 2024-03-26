@@ -24,6 +24,16 @@
     ?>
     <link rel="stylesheet" href="./css/form.css">
     <style>
+        body {
+      background-image: url(images/bg16.png);
+      background-repeat:no-repeat;
+      background-size:cover;
+    }
+
+    .opa{
+      opacity:  0.80;
+    }
+
         .mid {
             margin-left: 32%;
         }
@@ -31,7 +41,7 @@
 </head>
 
 <body>
-    <div class="form-container">
+    <div class="form-container opa">
         <form class="row g-3">
             <div class="col-md-6">
                 <label for="Email" class="form-label">Email</label>

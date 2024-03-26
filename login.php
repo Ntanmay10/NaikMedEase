@@ -32,14 +32,24 @@
   ?>
   <link rel="stylesheet" href="./css/form.css">
   <style>
-    .mid{
+    body {
+      background-image: url(images/bg16.png);
+      background-repeat:no-repeat;
+      background-size:cover;
+    }
+
+    .opa{
+      opacity:  0.80;
+    }
+
+    .mid {
       margin-left: 42%;
     }
   </style>
 </head>
 
 <body>
-  <div class="form-container" method="post">
+  <div class="form-container opa" method="post">
     <h2 class="text-center mb-4">Login</h2>
     <form id="loginForm" method="post">
       <div class="form-group">

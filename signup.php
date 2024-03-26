@@ -32,6 +32,16 @@
   }
   ?>
   <style>
+    body {
+      background-image: url(images/bg16.png);
+      background-repeat:no-repeat;
+      background-size:cover;
+    }
+
+    .opa{
+      opacity:  0.80;
+    }
+
     .mid{
       margin-left: 41%;
     }
@@ -40,7 +50,7 @@
 
 
 <body>
-  <div class="form-container" method="post">
+  <div class="form-container opa" method="post">
     <h2 class="text-center mb-4">Sign Up</h2>
     <form id="registrationForm" method="post">
       <div class="form-group">
