@@ -15,23 +15,37 @@
         $compid = $_REQUEST["company"];
         $prdunit = $_REQUEST["prdunit"];
         $filename = $_FILES["medimg"]["name"];
-        $tmpname = $_FILES["medimg"]["tmp_name"];
-        move_uploaded_file($tmpname, "medimage/$filename");
-        $q = "SELECT * FROM product WHERE prdnm='$prdnm'";
-        $t = mysqli_query($con, $q);
-        if (mysqli_num_rows($t) > 0) {
-            echo "<script>alert('Product already exists')</script>";
+        $filetype = $_FILES["medimg"]["type"];
+        $filetmpname = $_FILES["medimg"]["tmp_name"];
+
+        // Validate file type
+        $allowedTypes = array('image/jpeg', 'image/jpg', 'image/png');
+        if (!in_array($filetype, $allowedTypes)) {
+            echo "<script>alert('Only JPEG, JPG, and PNG files are allowed.')</script>";
         } else {
-            $addprd = "insert into product(prdnm,prdpri,compid,prdimg,stock) values('$prdnm','$prdpri','$compid','$filename','$prdunit')";
-            $done = mysqli_query($con, $addprd);
-            if ($done) {
-                echo "<script>alert('Product inserted')</script>";
+            // Move uploaded file
+            $uploadDir = "medimage/";
+            $uploadPath = $uploadDir . $filename;
+            if (move_uploaded_file($filetmpname, $uploadPath)) {
+                $q = "SELECT * FROM product WHERE prdnm='$prdnm'";
+                $t = mysqli_query($con, $q);
+                if (mysqli_num_rows($t) > 0) {
+                    echo "<script>alert('Product already exists')</script>";
+                } else {
+                    $addprd = "INSERT INTO product(prdnm, prdpri, compid, prdimg, stock) VALUES ('$prdnm', '$prdpri', '$compid', '$filename', '$prdunit')";
+                    $done = mysqli_query($con, $addprd);
+                    if ($done) {
+                        echo "<script>alert('Product inserted')</script>";
+                    }
+                }
+            } else {
+                echo "<script>alert('Error uploading file. Please try again.')</script>";
             }
         }
     }
     ?>
     <style>
-        .mid{
+        .mid {
             margin-left: 42%;
         }
     </style>
