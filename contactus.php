@@ -31,11 +31,21 @@
         .mid1 {
             margin-left: 35%;
         }
+        body {
+      background-image: url(images/bg16.png);
+      background-repeat:no-repeat;
+      background-size:cover;
+    }
+
+    .opa{
+      opacity:  0.80;
+    }
+
     </style>
 </head>
 
 <body>
-    <div class="form-container">
+    <div class="form-container opa">
         <h2 class="text-center mb-4">Contact Us</h2>
         <form id="registrationForm" method="post">
             <div class="form-group">

@@ -34,6 +34,11 @@
     .mla{
       margin-left: 47%;
     }
+    body {
+      background-image: url(images/bg16.png);
+      background-repeat:no-repeat;
+      background-size:cover;
+    }
   </style>
 </head>
 
