@@ -57,7 +57,7 @@
       <?php
       if (isset($_REQUEST["search"])) {
         $keyword = "%".$_REQUEST["myInput"]."%";
-        $sql = "SELECT * FROM product WHERE prdnm LIKE '$keyword' ORDER BY prdid ASC";
+        $sql = "SELECT * FROM product WHERE prdnm LIKE '$keyword' AND stock >=5 ORDER BY prdid ASC";
         $result = mysqli_query($con, $sql);
         //loop through the item table and gather details of the item and printing them
         while ($row = mysqli_fetch_assoc($result)) {
@@ -74,7 +74,7 @@
                   </div>";
         }
       } else {
-        $result = mysqli_query($con, "SELECT * FROM product");
+        $result = mysqli_query($con, "SELECT * FROM product WHERE stock >= 5");
         //loop through the item table and gather details of the item and printing them
         while ($row = mysqli_fetch_assoc($result)) {
           echo "<div class='card pro'>

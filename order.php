@@ -109,9 +109,8 @@
                     <h3 class="text-center">Total:
                         <?php
                         $net_total = $befdisc - $disc;
-                        echo $net_total . "&#8377";
-                        $recivable = floor($net_total);
-                        $_SESSION['reciv'] = $recivable;
+                        echo floor($net_total) . "&#8377";
+                        $_SESSION['reciv'] = $net_total;
                         ?>
                     </h3>
                     <form method="post">
