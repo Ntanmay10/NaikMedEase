@@ -21,11 +21,11 @@
         $GLOBALS['prdpri'] = $abc['prdpri'];
     }
     if (isset($_REQUEST["placeord"])) {
-        $regid=$_SESSION['regid'];
-        $orddate=date("d.m.y");
-        $prdid=$_SESSION['prdid'];
-        $qty=1;
-        $addrs=$_REQUEST['address'];
+        $regid = $_SESSION['regid'];
+        $orddate = date("d.m.Y");
+        $prdid = $_SESSION['prdid'];
+        $qty = 1;
+        $addrs = $_REQUEST['address'];
         $placeorder = mysqli_query($con, "INSERT INTO ordertab(regid,orddate,prdid,qty,addrs) VALUES('$regid','$orddate','$prdid','$qty','$addrs')");
         $tot = $_SESSION['reciv'];
         header('location:payment.php');
@@ -113,7 +113,7 @@
                         getdata();
                         $finalpay = $prdpri + $gst - $discpri;
                         echo $finalpay;
-                        $_SESSION['reciv']=$finalpay;
+                        $_SESSION['reciv'] = $finalpay;
                         ?>&#8377;
                     </h3>
                     <form method="post">

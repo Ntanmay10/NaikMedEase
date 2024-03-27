@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Navbar</title>
     <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
@@ -70,6 +71,11 @@
                     }
                     ?>
                 </ul>
+                <?php
+                    if (isset($_SESSION['usernm'])) {
+                        echo "<span><span class='fa'>&#xf007; </span> Hello ". $_SESSION['usernm']."</span>"; 
+                    }
+                    ?>
             </div>
         </div>
     </nav>
@@ -98,8 +104,8 @@
             window.location.href = "cart.php"
         }
 
-        function contus(){
-            window.location.href="contactus.php"
+        function contus() {
+            window.location.href = "contactus.php"
         }
     </script>
     <script src="./js/nav.js"></script>
