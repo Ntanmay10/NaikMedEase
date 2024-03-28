@@ -12,7 +12,8 @@
   if (isset($_REQUEST['subpay'])) {
     $transcode = $_REQUEST['transcode'];
     $regid = $_SESSION["regid"];
-    $saverec = mysqli_query($con, "insert into payment(transcode,amount,regid) values ('$transcode','$amount','$regid')");
+    $order_id=$_SESSION["orderID"];
+    $saverec = mysqli_query($con, "insert into payment(transcode,amount,regid,order_id) values ('$transcode','$amount','$regid','$order_id')");
     header('location:thankyou.php');
   }
   ?>
@@ -29,7 +30,7 @@
       <div class="amount-display">
         <?php echo floor($amount) ?> &#8377;
       </div>
-      <form>
+      <form method="post">
         <div class="form-group">
           <input type="text" class="form-control" id="transactionId" placeholder="Enter Transaction ID" name="transcode" pattern="[0-9]{15}" title="Enter the 15 digit transaction id" required>
         </div>

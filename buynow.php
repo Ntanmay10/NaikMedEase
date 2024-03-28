@@ -36,6 +36,7 @@
                 $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price) VALUES ('$order_id','$prdid', '$qty', '$price')");
             }
             // Redirect to payment page with the order ID
+            $_SESSION['orderID'] = $order_id;
             header("location: payment.php");
         }
     ?>
