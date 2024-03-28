@@ -42,7 +42,7 @@
         if ($_SESSION['total'] == 0) {
         } else {
             $_SESSION['order'] = $_REQUEST["btnord"];
-            header('location:order.php');
+            header('location:placeorder.php');
         }
     }
     ?>
