@@ -28,7 +28,6 @@
                 $delcart = mysqli_query($con, "DELETE from CART where prdid='$prdid' and regid='$regid'");
             }
         }
-        $tot = $_SESSION['reciv'];
         header('location:payment.php');
     }
     ?>
@@ -85,7 +84,7 @@
                                 <th scope="row">2</th>
                                 <td>GST 18%</td>
                                 <td><?php
-                                    $taxpay = ($tot * 18) / 100.0;
+                                    $taxpay = $tot * 0.18;
                                     echo $taxpay;
                                     ?>
                                     &#8377;
@@ -96,8 +95,8 @@
                                 <td>Disc 15%</td>
                                 <td>
                                     <?php
-                                    $befdisc = $tot + $taxpay;
-                                    $disc = ($befdisc * 15) / 100.0;
+                                    $aftergst = $tot + $taxpay;
+                                    $disc = $aftergst * 0.15;
                                     echo $disc;
                                     ?>
                                     &#8377;
@@ -108,9 +107,9 @@
                     <hr>
                     <h3 class="text-center">Total:
                         <?php
-                        $net_total = $befdisc - $disc;
+                        $net_total = $aftergst -  $disc;
                         echo floor($net_total) . "&#8377";
-                        $_SESSION['reciv'] = $net_total;
+                        $_SESSION['reciv'] = floor($net_total);
                         ?>
                     </h3>
                     <form method="post">
