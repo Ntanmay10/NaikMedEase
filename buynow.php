@@ -27,7 +27,6 @@
         $qty = 1;
         $addrs = $_REQUEST['address'];
         $placeorder = mysqli_query($con, "INSERT INTO ordertab(regid,orddate,prdid,qty,addrs) VALUES('$regid','$orddate','$prdid','$qty','$addrs')");
-        $tot = $_SESSION['reciv'];
         header('location:payment.php');
     }
     ?>
@@ -112,8 +111,8 @@
                         <?php
                         getdata();
                         $finalpay = $prdpri + $gst - $discpri;
-                        echo $finalpay;
-                        $_SESSION['reciv'] = $finalpay;
+                        echo floor($finalpay);
+                        $_SESSION['reciv'] = floor($finalpay);
                         ?>&#8377;
                     </h3>
                     <form method="post">
