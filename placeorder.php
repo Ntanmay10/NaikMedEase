@@ -8,37 +8,35 @@
     <?php include_once 'navbar.php' ?>
     <?php
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
-    $prdid = $_SESSION['prdid'];
-    $getprd = mysqli_query($con, "select * from product where prdid= '$prdid' ");
-    ?>
-    <?php
-    function getdata()
-    {
-        $con = mysqli_connect("localhost", "root", "", "naikmedease");
-        $prdid = $_SESSION['prdid'];
-        $res = mysqli_query($con, "SELECT * FROM `product` WHERE `prdid`='$prdid'");
-        $abc = mysqli_fetch_assoc($res);
-        $GLOBALS['prdpri'] = $abc['prdpri'];
-    }
-   
-        $regid = $_SESSION['regid'];
-        $orddate = date("d.m.Y");
-        $prdid = $_SESSION['prdid'];
-        $priceqry=mysqli_query($con,"select prdpri from product where prdid='$prdid'");
-        $rowp=mysqli_fetch_array($priceqry); 
-        $price= $rowp['prdpri'];  
-        $qty = 1;   
+    $customer_id = $_SESSION['order'];
+    $total_amount = $_SESSION['total'];
+    $order_date = date("d.m.Y");
     if (isset($_POST["placeord"])) {
         $addrs=$_REQUEST['address'];
-        $insert_order_query = mysqli_query($con, "INSERT INTO orders (customer_id, order_date, total_amount,addrs) VALUES ('$regid', '$orddate', '$price','$addrs')");
+        $insert_order_query = mysqli_query($con, "INSERT INTO orders (customer_id, order_date, total_amount,addrs) VALUES ('$customer_id', '$order_date', '$total_amount','$addrs')");
         if ($insert_order_query) {
+            // Insert order details into order_details table
             $order_id = mysqli_insert_id($con);
-                $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price) VALUES ('$order_id','$prdid', '$qty', '$price')");
+            $getcartdata = mysqli_query($con, "SELECT * FROM cart WHERE regid='$customer_id'");
+            while ($row = mysqli_fetch_array($getcartdata)) {
+                $prdid = $row['prdid'];
+                $qty = $row['quantity'];
+                $getprdpri = mysqli_query($con, "select prdpri from product where prdid='$prdid'");
+                $rowpri = mysqli_fetch_assoc($getprdpri);
+                $price = $rowpri['prdpri'];
+                $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price,orddate) VALUES ('$order_id','$prdid', '$qty', '$price','$order_date')");
+
+                if ($insert_order_detail_query) {
+                    // Remove product from cart after placing order
+                    $delcart = mysqli_query($con, "DELETE from CART where prdid='$prdid' and regid='$customer_id'");
+                }
             }
             // Redirect to payment page with the order ID
             header("location: payment.php");
         }
+    }
     ?>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/order.css">
 </head>
@@ -53,8 +51,11 @@
                     </div>
                     <div class="card-body">
                         <?php
-                        while ($row1 = mysqli_fetch_array($getprd)) {
-                            echo "
+                        $getcartdata = mysqli_query($con, "SELECT * FROM CART WHERE regid='$customer_id'");
+                        while ($row = mysqli_fetch_array($getcartdata)) {
+                            $getprd = mysqli_query($con, "select * from product where prdid='" . $row['prdid'] . "'");
+                            while ($row1 = mysqli_fetch_array($getprd)) {
+                                echo "
                                 <div class='product'>
                                 <img src='./medimage/" . $row1['prdimg'] . "' alt='Product 1'>
                                 <div class='product-info'>
@@ -63,6 +64,7 @@
                                 </div>
                                 </div>
                                 ";
+                            }
                         }
                         ?>
                     </div>
@@ -83,20 +85,14 @@
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Sub Total</td>
-                                <td> <?php
-                                        getdata();
-                                        echo $prdpri;
-                                        ?>&#8377;
-                                </td>
+                                <td><?php echo $total_amount ?>&#8377;</td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
                                 <td>GST 18%</td>
-                                <td>
-                                    <?php
-                                    getdata();
-                                    $gst = $prdpri * 0.18;
-                                    echo $gst;
+                                <td><?php
+                                    $taxpay = $total_amount * 0.18;
+                                    echo $taxpay;
                                     ?>
                                     &#8377;
                                 </td>
@@ -106,9 +102,9 @@
                                 <td>Disc 15%</td>
                                 <td>
                                     <?php
-                                    getdata();
-                                    $discpri = ($prdpri + $gst) * 0.15;
-                                    echo $discpri;
+                                    $aftergst = $total_amount + $taxpay;
+                                    $disc = $aftergst * 0.15;
+                                    echo $disc;
                                     ?>
                                     &#8377;
                                 </td>
@@ -118,11 +114,10 @@
                     <hr>
                     <h3 class="text-center">Total:
                         <?php
-                        getdata();
-                        $finalpay = $prdpri + $gst - $discpri;
-                        echo floor($finalpay);
-                        $_SESSION['reciv'] = floor($finalpay);
-                        ?>&#8377;
+                        $net_total = $aftergst -  $disc;
+                        echo floor($net_total) . "&#8377";
+                        $_SESSION['reciv'] = floor($net_total);
+                        ?>
                     </h3>
                     <form method="post">
                         <div class="form-group">
