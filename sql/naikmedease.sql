@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 28, 2024 at 05:38 AM
+-- Generation Time: Mar 28, 2024 at 10:59 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `regid` int NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`cartid`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -136,14 +136,16 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `total_amount` decimal(10,2) DEFAULT NULL,
   `addrs` varchar(200) NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `customer_id`, `order_date`, `total_amount`, `addrs`) VALUES
-(1, 2, '28.03.2024', '120.00', 'eru');
+(1, 2, '28.03.2024', '270.00', 'gandevi'),
+(2, 3, '28.03.2024', '120.00', 'vijalpor'),
+(3, 3, '28.03.2024', '1150.00', 'Vijalpor');
 
 -- --------------------------------------------------------
 
@@ -158,17 +160,20 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `product_id` int DEFAULT NULL,
   `quantity` int DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
-  `orddate` varchar(15) NOT NULL,
   PRIMARY KEY (`order_detail_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `order_details`
 --
 
-INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `quantity`, `price`, `orddate`) VALUES
-(1, 1, 1, 1, '120.00', '');
+INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
+(1, 1, 1, 1, '120.00'),
+(2, 1, 2, 1, '150.00'),
+(3, 2, 1, 1, '120.00'),
+(4, 3, 2, 1, '150.00'),
+(5, 3, 3, 5, '200.00');
 
 -- --------------------------------------------------------
 
@@ -179,18 +184,21 @@ INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `quant
 DROP TABLE IF EXISTS `payment`;
 CREATE TABLE IF NOT EXISTS `payment` (
   `payid` int NOT NULL AUTO_INCREMENT,
-  `transcode` int NOT NULL,
+  `transcode` varchar(15) NOT NULL,
   `amount` varchar(5) NOT NULL,
   `regid` int NOT NULL,
+  `order_id` int NOT NULL,
   PRIMARY KEY (`payid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`payid`, `transcode`, `amount`, `regid`) VALUES
-(1, 2147483647, '120', 2);
+INSERT INTO `payment` (`payid`, `transcode`, `amount`, `regid`, `order_id`) VALUES
+(1, '123456789012345', '270', 2, 1),
+(2, '123456789012345', '120', 3, 2),
+(3, '123456789012345', '1153', 3, 3);
 
 -- --------------------------------------------------------
 
