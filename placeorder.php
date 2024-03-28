@@ -24,7 +24,7 @@
                 $getprdpri = mysqli_query($con, "select prdpri from product where prdid='$prdid'");
                 $rowpri = mysqli_fetch_assoc($getprdpri);
                 $price = $rowpri['prdpri'];
-                $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price,orddate) VALUES ('$order_id','$prdid', '$qty', '$price','$order_date')");
+                $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price) VALUES ('$order_id','$prdid', '$qty', '$price')");
 
                 if ($insert_order_detail_query) {
                     // Remove product from cart after placing order
@@ -32,6 +32,7 @@
                 }
             }
             // Redirect to payment page with the order ID
+            $_SESSION['orderID'] = $order_id;
             header("location: payment.php");
         }
     }

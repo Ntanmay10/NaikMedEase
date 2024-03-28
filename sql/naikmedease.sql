@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 26, 2024 at 10:06 AM
+-- Generation Time: Mar 28, 2024 at 05:38 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `regid` int NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`cartid`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,14 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `cntcode` int NOT NULL,
   `cntstatus` varchar(200) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'pending',
   PRIMARY KEY (`cntid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`cntid`, `cntname`, `cntemail`, `cntdesc`, `cntcode`, `cntstatus`) VALUES
+(1, 'mann ahir', 'mann@gmail.com', 'i want gel', 3966, 'pending');
 
 -- --------------------------------------------------------
 
@@ -118,19 +125,50 @@ INSERT INTO `feedback` (`feedid`, `feedname`, `feedemail`, `feeddesc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ordertab`
+-- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `ordertab`;
-CREATE TABLE IF NOT EXISTS `ordertab` (
-  `orderid` int NOT NULL AUTO_INCREMENT,
-  `regid` int NOT NULL,
-  `orddate` varchar(12) COLLATE utf8mb4_general_ci NOT NULL,
-  `prdid` int NOT NULL,
-  `qty` int NOT NULL,
-  `addrs` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`orderid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `order_id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int DEFAULT NULL,
+  `order_date` varchar(15) DEFAULT NULL,
+  `total_amount` decimal(10,2) DEFAULT NULL,
+  `addrs` varchar(200) NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `customer_id`, `order_date`, `total_amount`, `addrs`) VALUES
+(1, 2, '28.03.2024', '120.00', 'eru');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+DROP TABLE IF EXISTS `order_details`;
+CREATE TABLE IF NOT EXISTS `order_details` (
+  `order_detail_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int DEFAULT NULL,
+  `product_id` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `orddate` varchar(15) NOT NULL,
+  PRIMARY KEY (`order_detail_id`),
+  KEY `order_id` (`order_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `quantity`, `price`, `orddate`) VALUES
+(1, 1, 1, 1, '120.00', '');
 
 -- --------------------------------------------------------
 
@@ -145,7 +183,14 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `amount` varchar(5) NOT NULL,
   `regid` int NOT NULL,
   PRIMARY KEY (`payid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payid`, `transcode`, `amount`, `regid`) VALUES
+(1, 2147483647, '120', 2);
 
 -- --------------------------------------------------------
 
@@ -169,13 +214,13 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`prdid`, `prdnm`, `prdpri`, `compid`, `prdimg`, `stock`) VALUES
-(1, 'vicco turmeric', '120', 10, 'vicco.jpg', 100),
+(1, 'vicco turmeric', '120', 10, 'vicco.jpg', 87),
 (2, 'Wildstone facewash', '150', 14, 'facewash.jpeg', 100),
 (3, 'Nicotex', '200', 1, 'nicotex.jpeg', 100),
 (4, 'cetaphil cleanser', '680', 15, 'cetaphil.jpg', 100),
 (5, 'cough syrup', '200', 16, 'syrup.jpeg', 100),
 (6, 'Acnestar', '225', 5, 'acnestar.png', 100),
-(7, 'Rovor 2.5', '450', 11, 'rovor.jpg', 100),
+(7, 'Rovor 2.5', '450', 11, 'rovor.jpg', 99),
 (8, 'Magic Soap with sandelwood', '200', 17, 'soap.jpg', 100),
 (9, 'Diprolite', '120', 18, 'diprolite.jpeg', 100);
 
