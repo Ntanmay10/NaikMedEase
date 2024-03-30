@@ -11,7 +11,7 @@
     $qry = mysqli_query($con, "select * from contact");
     if (isset($_REQUEST['btnsub'])) {
         $cntid = $_REQUEST['btnsub'];
-        $cntstatus = $_REQUEST['cntstatus'];
+        $cntstatus = $_REQUEST['cntstatus'.$cntid];
         $sql = "update contact set cntstatus='$cntstatus' where cntid='$cntid'";
         $res = mysqli_query($con, $sql);
         header('refresh:0');
@@ -60,7 +60,7 @@
                         <td>" . $row['cntname'] . " 
                         <td>" . $row['cntemail'] . " 
                         <td>" . $row['cntdesc'] . " 
-                        <td> <input type='text' name='cntstatus' class='form-control'>
+                        <td> <input type='text' name='cntstatus".$row['cntid']."' class='form-control'>
                         <td><button type='submit' class='btn btn-primary' name='btnsub' value=" . $row['cntid'] . ">Reply</button>
                         </tr>
                         ";

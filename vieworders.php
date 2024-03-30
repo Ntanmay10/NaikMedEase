@@ -11,21 +11,20 @@
     $getord = mysqli_query($con, "SELECT * FROM orders");
     if (isset($_POST['btnfilter'])) {
         $sdate = $_POST['sdate'];
-        echo $sdate;
+        $new_start_date=date("d.m.Y", strtotime($sdate));  
         $edate = $_POST['edate'];
-        $query = "SELECT * from orders where order_date >= '$sdate' and order_date <= '$edate'";
+        $new_end_date=date("d.m.Y", strtotime($edate));  
+        $query = "SELECT * from orders where order_date >= '$new_start_date' and order_date <= '$new_end_date'";
         $filterrec = mysqli_query($con, $query);
         // header('refresh:0');
     } else {
         $query = "select * from orders";
         $filterrec = mysqli_query($con, $query);
-        // header('refresh:0');
     }
 
     if (isset($_POST['btnall'])) {
         $query = "select * from orders";
         $filterrec = mysqli_query($con, $query);
-        // header('refresh:0');
     }
     ?>
     <link rel="stylesheet" href="./css/vieworder.css">
