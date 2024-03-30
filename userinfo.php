@@ -51,7 +51,7 @@
             </thead>
             <tbody id="myTable">
                 <?php
-                $userdata = mysqli_query($con, "select * from registration");
+                $userdata = mysqli_query($con, "select * from registration where usertyp='user'");
                 $num = 1;
                 while ($row = mysqli_fetch_assoc($userdata)) {
                     echo "<tr>

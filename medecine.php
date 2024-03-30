@@ -17,7 +17,10 @@
     $sql = "SELECT * FROM cart WHERE prdid= '$prdid' AND regid='$regid'";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
-      echo "<script>alert('Product already added to Cart') </script>";
+      echo "<div class='alert alert-warning alert-dismissible text-center fade show' role='alert'>
+      <strong>Item already added to cart</strong>
+    </div>
+    ";
     } else {
       $addtocart = mysqli_query($con, "insert into cart(prdid,regid) values($prdid,$regid)");
     }
