@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `total_amount` decimal(10,2) DEFAULT NULL,
   `addrs` varchar(200) NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `price` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`order_detail_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_details`
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `regid` int NOT NULL,
   `order_id` int NOT NULL,
   PRIMARY KEY (`payid`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment`
