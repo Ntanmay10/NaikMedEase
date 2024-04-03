@@ -21,12 +21,24 @@
     $chk = "SELECT * FROM registration WHERE email='$email' OR usernm='$usernm'";
     $t = mysqli_query($con, $chk);
     if (mysqli_num_rows($t) > 0) {
-      echo "<script>alert('Email or Username already Exists')</script>";
+      echo "<div class='alert alert-warning alert-dismissible text-center fade show' role='alert'>
+      <strong>Email or username already exists</strong>
+      <button type='button' class='btn btn-outline-warning' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+    </div>";
     } else {
       $q = "insert into registration (fullnm,usernm,email,passwd,secucode,usertyp) values ('$fullnm','$usernm','$email','$passwd','$secucode','Admin')";
       $exeqr = mysqli_query($con, $q);
       if ($exeqr) {
-        header('location:login.php');
+        echo"
+        <div class='alert alert-warning alert-dismissible text-center fade show' role='alert'>
+      <strong>Sub Admin Added</strong>
+      <button type='button' class='btn btn-outline-warning' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+    </div>
+        ";
       }
     }
   }
@@ -64,11 +76,14 @@
       </div>
       <div class="form-group">
         <label for="secucode">Security Code</label>
-        <input type="text" class="form-control" id="secucode" name="secucode" required>
+        <input type="text" class="form-control" id="secucode" pattern="[0-9]{4}" title="Enter 4 digit security code" name="secucode" required>
       </div>
       <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Add</button>
     </form>
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

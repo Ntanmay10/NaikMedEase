@@ -59,7 +59,7 @@
             </div>
             <div class="form-group">
                 <label for="Desc">Description</label>
-                <textarea class="form-control form-control-lg" id="Desc" name="msg"></textarea>
+                <textarea class="form-control form-control-lg" id="Desc" pattern="[A-Za-z0-9 ]{1,150}" Title="Description must be alphanumeric and between 1 to 150 characters" name="msg"></textarea>
             </div>
             <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Submit</button>
         </form>

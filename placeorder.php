@@ -15,7 +15,7 @@
         $filename = $_FILES["presimg"]["name"];
         $filetype = $_FILES["presimg"]["type"];
         $filetmpname = $_FILES["presimg"]["tmp_name"];
-        $addrs=$_REQUEST['address'];
+        $addrs = $_REQUEST['address'];
         $uploadDir = "presimage/";
         $uploadPath = $uploadDir . $filename;
         move_uploaded_file($filetmpname, $uploadPath);
@@ -33,6 +33,8 @@
                 $price = $rowpri['prdpri'];
                 $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price) VALUES ('$order_id','$prdid', '$qty', '$price')");
                 if ($insert_order_detail_query) {
+                    // Subtract ordered quantity from available quantity
+                    mysqli_query($con, "UPDATE product SET stock=stock-$qty WHERE prdid='$prdid'");
                     // Remove product from cart after placing order
                     $delcart = mysqli_query($con, "DELETE from CART where prdid='$prdid' and regid='$customer_id'");
                 }
