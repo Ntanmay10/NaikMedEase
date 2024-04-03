@@ -57,7 +57,7 @@
         <form id="loginForm" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">Product Name</label>
-                <input type="text" class="form-control" id="username" name="prdnm" required>
+                <input type="text" class="form-control" id="username" name="prdnm" pattern='[A-Za-z0-9 ]{3,15}' title="Follow the pattern" required>
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Medecine Image</label>
@@ -81,11 +81,11 @@
             </div>
             <div class="form-group">
                 <label for="prodprice">Product Price</label>
-                <input type="text" class="form-control" id="prodprice" name="prdpri" required>
+                <input type="text" class="form-control" id="prodprice" pattern="[0-9]{1,4}" name="prdpri" required>
             </div>
             <div class="form-group">
                 <label for="prdunit">Unit</label>
-                <input type="text" class="form-control" id="prdunit" name="prdunit" required>
+                <input type="text" class="form-control" id="prdunit" pattern="[0-9]{1,4}" name="prdunit" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block mid" name="btnaddmed">Add</button>
         </form>

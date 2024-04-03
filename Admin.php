@@ -32,11 +32,12 @@
     <form method='post'>
         <div class="container">
             <div class="nav center gap-5">
-                <a href="userfeedback.php" type="submit" class="btn btn-dark">User Feedback</a>
-                <a href="userinfo.php" type="submit" class="btn btn-dark">Manage User</a>
-                <a href="vieworders.php" type="submit" class="btn btn-dark">View Orders</a>
-                <a href="queries.php" type="submit" class="btn btn-dark">User Queries Manager</a>
-                <a href="addsubadmin.php" type="submit" class="btn btn-dark">Add Sub-Admin</a>
+                <a href="userfeedback.php" class="btn btn-dark">User Feedback</a>
+                <a href="userinfo.php" class="btn btn-dark">Manage User</a>
+                <a href="vieworders.php" class="btn btn-dark">View Orders</a>
+                <a href="queries.php" class="btn btn-dark">User Queries Manager</a>
+                <a href="addsubadmin.php" class="btn btn-dark">Add Sub-Admin</a>
+                <a href="adddoc.php" class="btn btn-dark">Add Doctor</a>
             </div>
             <h2>Queries to be answered</h2>
             <table class="table table-hover">

@@ -28,7 +28,7 @@
     } else {
       echo "<div class='alert alert-warning alert-dismissible text-center fade show' role='alert'>
       <strong>Invalid Credentials</strong>
-      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <button type='button' class='btn btn-outline-warning' data-dismiss='alert' aria-label='Close'>
         <span aria-hidden='true'>&times;</span>
       </button>
     </div>
@@ -45,7 +45,7 @@
     }
 
     .opa {
-      opacity: 0.80;
+      opacity: 0.90;
     }
 
     .mid {

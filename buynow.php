@@ -20,25 +20,32 @@
         $abc = mysqli_fetch_assoc($res);
         $GLOBALS['prdpri'] = $abc['prdpri'];
     }
-   
-        $regid = $_SESSION['regid'];
-        $orddate = date("d.m.Y");
-        $prdid = $_SESSION['prdid'];
-        $priceqry=mysqli_query($con,"select prdpri from product where prdid='$prdid'");
-        $rowp=mysqli_fetch_array($priceqry); 
-        $price= $rowp['prdpri'];  
-        $qty = 1;   
+
+    $regid = $_SESSION['regid'];
+    $orddate = date("d.m.Y");
+    $prdid = $_SESSION['prdid'];
+    $priceqry = mysqli_query($con, "select prdpri from product where prdid='$prdid'");
+    $rowp = mysqli_fetch_array($priceqry);
+    $price = $rowp['prdpri'];
+    $qty = 1;
     if (isset($_POST["placeord"])) {
-        $addrs=$_REQUEST['address'];
+        $filename = $_FILES["presimg"]["name"];
+        $filetype = $_FILES["presimg"]["type"];
+        $filetmpname = $_FILES["presimg"]["tmp_name"];
+        $addrs = $_REQUEST['address'];
+        $uploadDir = "presimage/";
+        $uploadPath = $uploadDir . $filename;
+        move_uploaded_file($filetmpname, $uploadPath);
         $insert_order_query = mysqli_query($con, "INSERT INTO orders (customer_id, order_date, total_amount,addrs) VALUES ('$regid', '$orddate', '$price','$addrs')");
         if ($insert_order_query) {
             $order_id = mysqli_insert_id($con);
-                $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price) VALUES ('$order_id','$prdid', '$qty', '$price')");
-            }
-            // Redirect to payment page with the order ID
-            $_SESSION['orderID'] = $order_id;
-            header("location: payment.php");
+            $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price) VALUES ('$order_id','$prdid', '$qty', '$price')");
+            $insert_pres = mysqli_query($con, "INSERT INTO prescription (regid, order_id, preimg) VALUES ('$regid', '$order_id', '$filename')");
         }
+        // Redirect to payment page with the order ID
+        $_SESSION['orderID'] = $order_id;
+        header("location: payment.php");
+    }
     ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/order.css">
@@ -125,10 +132,14 @@
                         $_SESSION['reciv'] = floor($finalpay);
                         ?>&#8377;
                     </h3>
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="address">Address:</label>
                             <textarea class="form-control" id="address" name="address" placeholder="Enter your address" required></textarea>
+                        </div>
+                        <div>
+                            <label for="pres">Prescription Image:</label>
+                            <input type="file" name="presimg" id="pres" class="form-control" required>
                         </div>
                         <button class="btn btn-success btn-block mt-3" name="placeord">Proceed to Checkout</button>
                     </form>

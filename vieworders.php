@@ -26,6 +26,11 @@
         $query = "select * from orders";
         $filterrec = mysqli_query($con, $query);
     }
+
+    if (isset($_POST['btnpres'])) {
+        $_SESSION['pres']=$_REQUEST['btnpres'];
+        header('location:checkpres.php');
+    }
     ?>
     <link rel="stylesheet" href="./css/vieworder.css">
     <link rel="stylesheet" href="./css/form.css">
@@ -78,6 +83,7 @@
                         <th>Email</th>
                         <th>Amount</th>
                         <th>Ref ID</th>
+                        <th>Prescription</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -88,15 +94,15 @@
                         while ($row = mysqli_fetch_array($getuser)) {
                             $pay=mysqli_query($con,"SELECT * FROM payment WHERE order_id='$rw[order_id]'");
                             while ($payrow=mysqli_fetch_array($pay)) {
-                                
-                                echo ('<tr>');
-                                echo ('<td>' . $rw['customer_id'] . '</td>');
-                            echo ('<td>' . $rw['order_date'] . '</td>');
-                            echo ('<td>' . $row['fullnm'] . '</td>');
-                            echo ('<td>' . $row['email'] . '</td>');
-                            echo ('<td>' . $rw['total_amount']  . '</td>');
-                            echo ('<td>' . $payrow['transcode']  . '</td>');
-                            echo ('</tr>');
+                                echo "<tr>
+                                <td> ". $rw['customer_id'] ." </td>
+                            <td> ". $rw['order_date'] ." </td>
+                            <td> ". $row['fullnm'] ." </td>
+                            <td> ". $row['email'] ." </td>
+                            <td> ". $rw['total_amount']  ." </td>
+                            <td> ". $payrow['transcode']  ." </td>
+                            <td><button type='submit' name='btnpres' value=".$rw['order_id']." class='btn btn-primary'>Check Prescription</button></td>
+                            </tr>";
                         }
                         }
                     }
