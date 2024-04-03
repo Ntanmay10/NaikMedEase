@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label for="Desc">Feedback</label>
-                <textarea class="form-control form-control-lg" id="Desc" name="feeddesc"></textarea>
+                <textarea class="form-control form-control-lg" id="Desc" pattern="[A-Za-z0-9 ]{1,100}" title="Provide feedback in alphanumeric manner minimun 1 and max 100 character" name="feeddesc"></textarea>
             </div>
             <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Submit</button>
         </form>

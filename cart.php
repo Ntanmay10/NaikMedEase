@@ -30,7 +30,12 @@
         $availableStock = $productInfo['stock'];
 
         if ($qty > $availableStock) {
-            echo "<script>alert('Maximum available quantity for this product is $availableStock');</script>";
+            echo "<div class='alert alert-warning alert-dismissible text-center fade show' role='alert'>
+            <strong>Maximum available quantity for this product is $availableStock</strong>
+            <button type='button' class='btn btn-outline-warning' data-dismiss='alert' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>";
         } else {
             // Update cart if the entered quantity is within the available stock
             mysqli_query($con, "UPDATE cart SET quantity='$qty' WHERE cartid='$cartid'");
@@ -97,6 +102,9 @@
             <button class="btn btn-primary checkout-btn" name="btnord" value="<?php echo $regid ?>">Place order</button>
         </div>
     </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

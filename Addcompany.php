@@ -14,12 +14,22 @@
         $q = "SELECT * FROM company WHERE compname='$compname'";
         $t = mysqli_query($con, $q);
         if (mysqli_num_rows($t) > 0) {
-            echo "<script>alert('Company already exists')</script>";
+            echo "<div class='alert alert-warning alert-dismissible text-center fade show' role='alert'>
+            <strong>Company already exists</strong>
+            <button type='button' class='btn btn-outline-warning' data-dismiss='alert' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>";
         } else {
             $addcomp = "insert into company(compname) values('$compname')";
             $done = mysqli_query($con, $addcomp);
             if ($done) {
-                echo "<script>alert('Company inserted')</script>";
+                echo "<div class='alert alert-warning alert-dismissible text-center fade show' role='alert'>
+                <strong>Company Inserted</strong>
+                <button type='button' class='btn btn-outline-warning' data-dismiss='alert' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
             }
         }
     }
@@ -55,7 +65,7 @@
         <form id="loginForm" method="post">
             <div class="form-group">
                 <label for="compname">Company Name</label>
-                <input type="text" class="form-control" id="compname" name="compname" required>
+                <input type="text" class="form-control" id="compname" name="compname" pattern="[A-z a-z]{3,25}" title="Only aplhabets minimum 3 and maximum 25" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block mid" name="btnadd">Add</button>
         </form>

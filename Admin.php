@@ -34,8 +34,9 @@
             <div class="nav center gap-5">
                 <a href="userfeedback.php" class="btn btn-dark">User Feedback</a>
                 <a href="userinfo.php" class="btn btn-dark">Manage User</a>
-                <a href="vieworders.php" class="btn btn-dark">View Orders</a>
-                <a href="queries.php" class="btn btn-dark">User Queries Manager</a>
+                <a href="vieworders.php" class="btn btn-dark">New Orders</a>
+                <a href="conforders.php" class="btn btn-dark">Confirmed Orders</a>
+                <a href="queries.php" class="btn btn-dark">User Queries</a>
                 <a href="addsubadmin.php" class="btn btn-dark">Add Sub-Admin</a>
                 <a href="adddoc.php" class="btn btn-dark">Add Doctor</a>
             </div>

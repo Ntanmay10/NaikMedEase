@@ -74,7 +74,7 @@
       </div>
       <div class="form-group">
         <label for="secucode">Security Code</label>
-        <input type="text" class="form-control" id="secucode" name="secucode" required>
+        <input type="text" class="form-control" id="secucode" pattern="[0-9]{4}" title="Enter 4 digit security code" name="secucode" required>
       </div>
       <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Sign Up</button>
     </form>

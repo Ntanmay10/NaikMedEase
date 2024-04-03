@@ -15,10 +15,12 @@
         $newpass = $_REQUEST['newpass'];
 
         $getuser = mysqli_query($con, "SELECT * FROM registration WHERE email = '$email'AND usernm = '$usernm' AND secucode='$secucode'");
-        if ($getuser) {
+        if (mysqli_num_rows($getuser)>0) {
             $updatepass=mysqli_query($con,"update registration set passwd='$newpass' where email='$email'");
             echo "<script>alert('Password Updated Successfully')</script>";
             header("location:login.php");
+        }else{
+            echo "<script>alert('No user found')</script>";
         }
     }
     ?>
@@ -58,7 +60,9 @@
             </div>
             <div class="col-md-6">
                 <label for="newpass" class="form-label">New Password</label>
-                <input type="text" class="form-control" id="newpass" name="newpass" required>
+                <input type="text" class="form-control" id="newpass" name="newpass"
+                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number
+        and one uppercase and lowercase letter, and at least 8 or more characters" required>
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary mid" name="btnchng">Change password</button>

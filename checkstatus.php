@@ -23,6 +23,10 @@
       opacity:  0.80;
     }
 
+    .cent{
+        margin-top: 5%;
+        margin-left: 37%;
+    }
     </style>
 </head>
 <body>
@@ -31,7 +35,7 @@
         <form id="loginForm" method="post">
             <div class="form-group">
                 <label for="compname">Contact Code</label>
-                <input type="text" class="form-control" id="compname" name="cntcode" required>
+                <input type="text" class="form-control" id="compname" pattern="[0-9]{4}" title="Enter the 4 digit unique contact code" name="cntcode" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block mid" name="btncnt">Find</button>
         </form>
@@ -52,20 +56,34 @@
                 $cntcode = $_REQUEST["cntcode"];
                 $t = mysqli_query($con, "SELECT * FROM contact WHERE cntcode='$cntcode'");
                 $num = 1;
-                while ($row = mysqli_fetch_assoc($t)) {
-                    echo "<tr>
-                    <th scope='row'>" . $num . "</th>
-                    <td>" . $row['cntname'] . "</td>
-                    <td>" . $row['cntdesc'] . "</td>
-                    <td>".$row['cntstatus']."</td>
-                    </td>
-                    </tr>";
-                    $num++;
+                if (mysqli_num_rows($t)>0) {
+                    while ($row = mysqli_fetch_assoc($t)) {
+                        echo "<tr>
+                        <th scope='row'>" . $num . "</th>
+                        <td>" . $row['cntname'] . "</td>
+                        <td>" . $row['cntdesc'] . "</td>
+                        <td>".$row['cntstatus']."</td>
+                        </td>
+                        </tr>";
+                        $num++;
+                    }
+                }else{
+                    echo"
+                    <div class='alert alert-warning alert-dismissible text-center fixed-top cent w-25 fade show' role='alert'>
+      <strong>NO queries fetched</strong>
+      <button type='button' class='btn btn-outline-warning' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+    </div>
+                    ";
                 }
             }
             ?>
         </tbody>
     </table>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
