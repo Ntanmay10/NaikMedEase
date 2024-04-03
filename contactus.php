@@ -16,6 +16,7 @@
         $addque = "insert into contact(cntname,cntemail,cntdesc,cntcode) values('$cntname','$email','$message','$cntcode')";
         $done = mysqli_query($con, $addque);
         if ($done) {
+            
             echo "<script>
             alert('Query Raised & cntcode=$cntcode, Please share this code with the concerned person');
             </script>";

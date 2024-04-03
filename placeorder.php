@@ -12,11 +12,18 @@
     $total_amount = $_SESSION['total'];
     $order_date = date("d.m.Y");
     if (isset($_POST["placeord"])) {
+        $filename = $_FILES["presimg"]["name"];
+        $filetype = $_FILES["presimg"]["type"];
+        $filetmpname = $_FILES["presimg"]["tmp_name"];
         $addrs=$_REQUEST['address'];
+        $uploadDir = "presimage/";
+        $uploadPath = $uploadDir . $filename;
+        move_uploaded_file($filetmpname, $uploadPath);
         $insert_order_query = mysqli_query($con, "INSERT INTO orders (customer_id, order_date, total_amount,addrs) VALUES ('$customer_id', '$order_date', '$total_amount','$addrs')");
         if ($insert_order_query) {
             // Insert order details into order_details table
             $order_id = mysqli_insert_id($con);
+            $insert_pres = mysqli_query($con, "INSERT INTO prescription (regid, order_id, preimg) VALUES ('$customer_id', '$order_id', '$filename')");
             $getcartdata = mysqli_query($con, "SELECT * FROM cart WHERE regid='$customer_id'");
             while ($row = mysqli_fetch_array($getcartdata)) {
                 $prdid = $row['prdid'];
@@ -25,7 +32,6 @@
                 $rowpri = mysqli_fetch_assoc($getprdpri);
                 $price = $rowpri['prdpri'];
                 $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price) VALUES ('$order_id','$prdid', '$qty', '$price')");
-
                 if ($insert_order_detail_query) {
                     // Remove product from cart after placing order
                     $delcart = mysqli_query($con, "DELETE from CART where prdid='$prdid' and regid='$customer_id'");
@@ -120,10 +126,14 @@
                         $_SESSION['reciv'] = floor($net_total);
                         ?>
                     </h3>
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="address">Address:</label>
                             <textarea class="form-control" id="address" name="address" placeholder="Enter your address" required></textarea>
+                        </div>
+                        <div>
+                            <label for="pres">Prescription Image:</label>
+                            <input type="file" name="presimg" id="pres" class="form-control" required>
                         </div>
                         <button class="btn btn-success btn-block mt-3" name="placeord">Proceed to Checkout</button>
                     </form>
