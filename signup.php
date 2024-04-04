@@ -34,15 +34,15 @@
   <style>
     body {
       background-image: url(images/bg16.png);
-      background-repeat:no-repeat;
-      background-size:cover;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
-    .opa{
-      opacity:  0.80;
+    .opa {
+      opacity: 0.80;
     }
 
-    .mid{
+    .mid {
       margin-left: 41%;
     }
   </style>
@@ -55,8 +55,7 @@
     <form id="registrationForm" method="post">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" name="fullnm" pattern="[A-Za-z ]{3,30}"
-        title="Minimum 3chars and Max 30, Chars Only" required>
+        <input type="text" class="form-control" id="fullName" name="fullnm" pattern="[A-Za-z ]{3,30}" title="Minimum 3chars and Max 30, Chars Only" required>
       </div>
       <div class="form-group">
         <label for="email">Email Address</label>
@@ -64,8 +63,7 @@
       </div>
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="usernm"  pattern="[A-Za-z 0-9]{3,30}"
-        title="Minimum 3 and Max 30 alphanumeric code" required>
+        <input type="text" class="form-control" id="username" name="usernm" pattern="[A-Za-z 0-9]{3,30}" title="Minimum 3 and Max 30 alphanumeric code" required>
       </div>
       <div class="form-group">
         <label for="password">Password</label>

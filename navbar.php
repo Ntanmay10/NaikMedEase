@@ -72,10 +72,10 @@
                     ?>
                 </ul>
                 <?php
-                    if (isset($_SESSION['usernm'])) {
-                        echo "<span><span class='fa'>&#xf007; </span> Hello ". $_SESSION['usernm']."</span>"; 
-                    }
-                    ?>
+                if (isset($_SESSION['usernm'])) {
+                    echo "<span><span class='fa'>&#xf007; </span> Hello " . $_SESSION['usernm'] . "</span>";
+                }
+                ?>
             </div>
         </div>
     </nav>

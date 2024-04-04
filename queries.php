@@ -7,7 +7,7 @@
     <title>User Query</title>
     <?php include_once 'navbar.php'; ?>
     <?php
-     $con = mysqli_connect("localhost", "root", "", "naikmedease");
+    $con = mysqli_connect("localhost", "root", "", "naikmedease");
     $t = mysqli_query($con, "SELECT * FROM contact");
     ?>
     <link rel="stylesheet" href="./css/form.css">
@@ -16,10 +16,12 @@
         .mid {
             margin-left: 42%;
         }
-        h2{
+
+        h2 {
             text-align: center;
             margin-top: 1%;
         }
+
         .middle {
             margin-left: 35%;
             margin-top: 1%;
@@ -29,17 +31,17 @@
 </head>
 
 <body>
-<div class="box">
-            <nav>
-                <div class="lbl">Search</div>
-                <div class="input-group ml-5">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">@</span>
-                    </div>
-                    <input type="text" class="form-control w-25" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    <div class="box">
+        <nav>
+            <div class="lbl">Search</div>
+            <div class="input-group ml-5">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
                 </div>
-            </nav>
-        </div>
+                <input type="text" class="form-control w-25" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        </nav>
+    </div>
     <h2>User Queries</h2>
     <table class="table table-hover text-center format rounded">
         <thead class="table-dark">
@@ -52,17 +54,17 @@
         </thead>
         <tbody class="table-group-divider" id="myTable">
             <?php
-                $num = 1;
-                while ($row = mysqli_fetch_assoc($t)) {
-                    echo "<tr>
+            $num = 1;
+            while ($row = mysqli_fetch_assoc($t)) {
+                echo "<tr>
                     <th scope='row'>" . $num . "</th>
                     <td>" . $row['cntname'] . "</td>
                     <td>" . $row['cntdesc'] . "</td>
                     <td>" . $row['cntstatus'] . "</td>
                     </td>
                     </tr>";
-                    $num++;
-                }
+                $num++;
+            }
             ?>
         </tbody>
     </table>

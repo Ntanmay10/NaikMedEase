@@ -26,17 +26,17 @@
 </head>
 
 <body>
-<div class="box">
-            <nav>
-                <div class="lbl">Search</div>
-                <div class="input-group ml-5">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">@</span>
-                    </div>
-                    <input type="text" class="form-control w-25" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    <div class="box">
+        <nav>
+            <div class="lbl">Search</div>
+            <div class="input-group ml-5">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
                 </div>
-            </nav>
-        </div>
+                <input type="text" class="form-control w-25" id="myInput" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        </nav>
+    </div>
     <div class="container">
         <h2>Feedbacks</h2>
         <table class="table table-hover">

@@ -41,7 +41,7 @@
             $order_id = mysqli_insert_id($con);
             $insert_order_detail_query = mysqli_query($con, "INSERT INTO order_details (order_id,product_id, quantity, price) VALUES ('$order_id','$prdid', '$qty', '$price')");
             $insert_pres = mysqli_query($con, "INSERT INTO prescription (regid, order_id, preimg) VALUES ('$regid', '$order_id', '$filename')");
-          // Subtract ordered quantity from available quantity
+            // Subtract ordered quantity from available quantity
             mysqli_query($con, "UPDATE product SET stock=stock-$qty WHERE prdid='$prdid'");
         }
         // Redirect to payment page with the order ID
