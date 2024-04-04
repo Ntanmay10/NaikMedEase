@@ -30,6 +30,11 @@
         $_SESSION['pres']=$_REQUEST['btnpres'];
         header('location:checkpres.php');
     }
+
+    if (isset($_POST['btnprod'])) {
+        $_SESSION['order_id']=$_REQUEST['btnprod'];
+        header('location:checkprod.php');
+    }
     ?>
     <link rel="stylesheet" href="./css/vieworder.css">
     <link rel="stylesheet" href="./css/form.css">
@@ -81,9 +86,11 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Amount</th>
+                        <th>Addess</th>
                         <th>Ref ID</th>
-                        <th>Prescription</th>
                         <th>Status</th>
+                        <th>Products</th>
+                        <th>Prescription</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -100,9 +107,11 @@
                             <td> ". $row['fullnm'] ." </td>
                             <td> ". $row['email'] ." </td>
                             <td> ". $rw['total_amount']  ." </td>
+                            <td> ". $rw['addrs']  ." </td>
                             <td> ". $payrow['transcode']  ." </td>
                             <td> ". $rw['ord_status']  ." </td>
-                            <td><button type='submit' name='btnpres' value=".$rw['order_id']." class='btn btn-primary'>Check Prescription</button></td>
+                            <td><button type='submit' name='btnprod' value=".$rw['order_id']." class='btn btn-primary'>View</button></td>
+                            <td><button type='submit' name='btnpres' value=".$rw['order_id']." class='btn btn-primary'>Check</button></td>
                             </tr>";
                         }
                         }
