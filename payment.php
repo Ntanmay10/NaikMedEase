@@ -12,7 +12,7 @@
   if (isset($_REQUEST['subpay'])) {
     $transcode = $_REQUEST['transcode'];
     $regid = $_SESSION["regid"];
-    $order_id=$_SESSION["orderID"];
+    $order_id = $_SESSION["orderID"];
     $saverec = mysqli_query($con, "insert into payment(transcode,amount,regid,order_id) values ('$transcode','$amount','$regid','$order_id')");
     header('location:thankyou.php');
   }

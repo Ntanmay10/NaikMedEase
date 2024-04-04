@@ -57,18 +57,18 @@
         <h2>User Feedback</h2>
         <div class="feedback">
             <?php
-            $con=mysqli_connect("localhost","root","","naikmedease");
-            $feedbck=mysqli_query($con,"select * from feedback");
+            $con = mysqli_connect("localhost", "root", "", "naikmedease");
+            $feedbck = mysqli_query($con, "select * from feedback");
             while ($row = mysqli_fetch_array($feedbck)) {
-                echo"
+                echo "
                 <div class='user-feedback'>
-                <p class='feedback-text'>".$row['feeddesc']."</p>
-                <p class='user-info'>-".$row['feedname']."</p>
+                <p class='feedback-text'>" . $row['feeddesc'] . "</p>
+                <p class='user-info'>-" . $row['feedname'] . "</p>
             </div><hr>
                 ";
             }
             ?>
-            
+
         </div>
     </div>
     <?php include_once 'footer.php'; ?>

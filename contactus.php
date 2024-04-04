@@ -12,11 +12,11 @@
         $cntname = $_REQUEST['cname'];
         $email = $_REQUEST['email'];
         $message = $_REQUEST['msg'];
-        $cntcode=rand(1000,9999);
+        $cntcode = rand(1000, 9999);
         $addque = "insert into contact(cntname,cntemail,cntdesc,cntcode) values('$cntname','$email','$message','$cntcode')";
         $done = mysqli_query($con, $addque);
         if ($done) {
-            
+
             echo "<script>
             alert('Query Raised & cntcode=$cntcode, Please share this code with the concerned person');
             </script>";
@@ -29,19 +29,20 @@
         .mid {
             margin-left: 40%;
         }
+
         .mid1 {
             margin-left: 35%;
         }
+
         body {
-      background-image: url(images/bg16.png);
-      background-repeat:no-repeat;
-      background-size:cover;
-    }
+            background-image: url(images/bg16.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
 
-    .opa{
-      opacity:  0.80;
-    }
-
+        .opa {
+            opacity: 0.80;
+        }
     </style>
 </head>
 

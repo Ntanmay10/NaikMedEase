@@ -10,9 +10,9 @@
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
     if (isset($_POST['btnfilter'])) {
         $sdate = $_POST['sdate'];
-        $new_start_date=date("d.m.Y", strtotime($sdate));  
+        $new_start_date = date("d.m.Y", strtotime($sdate));
         $edate = $_POST['edate'];
-        $new_end_date=date("d.m.Y", strtotime($edate));  
+        $new_end_date = date("d.m.Y", strtotime($edate));
         $query = "SELECT * from orders where order_date >= '$new_start_date' and order_date <= '$new_end_date' and ord_status!='pending'";
         $filterrec = mysqli_query($con, $query);
         // header('refresh:0');
@@ -27,12 +27,12 @@
     }
 
     if (isset($_POST['btnpres'])) {
-        $_SESSION['pres']=$_REQUEST['btnpres'];
+        $_SESSION['pres'] = $_REQUEST['btnpres'];
         header('location:checkpres.php');
     }
 
     if (isset($_POST['btnprod'])) {
-        $_SESSION['order_id']=$_REQUEST['btnprod'];
+        $_SESSION['order_id'] = $_REQUEST['btnprod'];
         header('location:checkprod.php');
     }
     ?>
@@ -99,21 +99,21 @@
                     while ($rw = mysqli_fetch_array($filterrec)) {
                         $getuser = mysqli_query($con, "SELECT * FROM registration  WHERE regid='$rw[customer_id]'");
                         while ($row = mysqli_fetch_array($getuser)) {
-                            $pay=mysqli_query($con,"SELECT * FROM payment WHERE order_id='$rw[order_id]'");
-                            while ($payrow=mysqli_fetch_array($pay)) {
+                            $pay = mysqli_query($con, "SELECT * FROM payment WHERE order_id='$rw[order_id]'");
+                            while ($payrow = mysqli_fetch_array($pay)) {
                                 echo "<tr>
-                                <td> ". $rw['customer_id'] ." </td>
-                            <td> ". $rw['order_date'] ." </td>
-                            <td> ". $row['fullnm'] ." </td>
-                            <td> ". $row['email'] ." </td>
-                            <td> ". $rw['total_amount']  ." </td>
-                            <td> ". $rw['addrs']  ." </td>
-                            <td> ". $payrow['transcode']  ." </td>
-                            <td> ". $rw['ord_status']  ." </td>
-                            <td><button type='submit' name='btnprod' value=".$rw['order_id']." class='btn btn-primary'>View</button></td>
-                            <td><button type='submit' name='btnpres' value=".$rw['order_id']." class='btn btn-primary'>Check</button></td>
+                                <td> " . $rw['customer_id'] . " </td>
+                            <td> " . $rw['order_date'] . " </td>
+                            <td> " . $row['fullnm'] . " </td>
+                            <td> " . $row['email'] . " </td>
+                            <td> " . $rw['total_amount']  . " </td>
+                            <td> " . $rw['addrs']  . " </td>
+                            <td> " . $payrow['transcode']  . " </td>
+                            <td> " . $rw['ord_status']  . " </td>
+                            <td><button type='submit' name='btnprod' value=" . $rw['order_id'] . " class='btn btn-primary'>View</button></td>
+                            <td><button type='submit' name='btnpres' value=" . $rw['order_id'] . " class='btn btn-primary'>Check</button></td>
                             </tr>";
-                        }
+                            }
                         }
                     }
                     ?>

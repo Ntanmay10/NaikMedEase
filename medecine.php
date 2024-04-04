@@ -34,13 +34,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="./css/vieworder.css">
   <style>
-    .mla{
+    .mla {
       margin-left: 47%;
     }
+
     body {
       background-image: url(images/bg16.png);
-      background-repeat:no-repeat;
-      background-size:cover;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   </style>
 </head>
@@ -64,7 +65,7 @@
     <div class="card-container">
       <?php
       if (isset($_REQUEST["search"])) {
-        $keyword = "%".$_REQUEST["myInput"]."%";
+        $keyword = "%" . $_REQUEST["myInput"] . "%";
         $sql = "SELECT * FROM product WHERE prdnm LIKE '$keyword' AND stock >=5 ORDER BY prdid ASC";
         $result = mysqli_query($con, $sql);
         //loop through the item table and gather details of the item and printing them

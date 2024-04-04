@@ -8,7 +8,6 @@
     <?php include_once 'navbar.php'; ?>
     <link rel="stylesheet" href="./css/aboutus.css">
     <style>
-
         .mid {
             margin-left: 45%;
         }

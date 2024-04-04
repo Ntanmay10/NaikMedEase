@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/form.css">
     <?php
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
-    $pres=$_SESSION['pres']
+    $pres = $_SESSION['pres']
     ?>
     <style>
         .mid {
@@ -23,10 +23,10 @@
         <h2 class="text-center mb-4">Prescription</h2>
         <div>
             <?php
-                $getpres=mysqli_query($con,"select preimg from prescription where order_id='$pres'");
-                $showpres=mysqli_fetch_array($getpres);
-                echo"
-                <img src='./presimage/".$showpres[0]."' alt='img' height='500px' width='100%'>
+            $getpres = mysqli_query($con, "select preimg from prescription where order_id='$pres'");
+            $showpres = mysqli_fetch_array($getpres);
+            echo "
+                <img src='./presimage/" . $showpres[0] . "' alt='img' height='500px' width='100%'>
                 ";
             ?>
         </div>
