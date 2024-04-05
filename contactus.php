@@ -34,6 +34,10 @@
             margin-left: 35%;
         }
 
+        .mid2 {
+            margin-left: 30%;
+        }
+
         body {
             background-image: url(images/bg16.png);
             background-repeat: no-repeat;
@@ -67,6 +71,7 @@
         <div>
             <a type="submit" class="btn btn-primary btn-block mt-1 mid1" href="./checkstatus.php">check status</a>
         </div>
+        <a href="index.php" class="btn btn-primary btn-block mt-1 mid2">Back to Home Page</a>
     </div>
 </body>
 

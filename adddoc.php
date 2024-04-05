@@ -8,15 +8,27 @@
     <?php include_once 'navbar.php'; ?>
     <link rel="stylesheet" href="./css/form.css">
     <?php
-    $con = mysqli_connect("localhost", "root", "", "naikmedease");
-    if (isset($_REQUEST["btnadd"])) {
-        $docnm = $_REQUEST["docnm"];
-        $doccnt = $_REQUEST["doccnt"];
-        $docqulif = $_REQUEST["docqulif"];
-        $filename = $_FILES["docimg"]["name"];
-        $filetype = $_FILES["docimg"]["type"];
-        $filetmpname = $_FILES["docimg"]["tmp_name"];
+$con = mysqli_connect("localhost", "root", "", "naikmedease");
+if (isset($_REQUEST["btnadd"])) {
+    $docnm = $_REQUEST["docnm"];
+    $doccnt = $_REQUEST["doccnt"];
+    $docqulif = $_REQUEST["docqulif"];
+    $filename = $_FILES["docimg"]["name"];
+    $filetype = $_FILES["docimg"]["type"];
+    $filetmpname = $_FILES["docimg"]["tmp_name"];
 
+    // Check if doctor with the same contact exists
+    $checkDuplicateQuery = "SELECT COUNT(*) AS count FROM doctor WHERE doccnt = '$doccnt'";
+    $duplicateResult = mysqli_query($con, $checkDuplicateQuery);
+    $row = mysqli_fetch_assoc($duplicateResult);
+    if ($row['count'] > 0) {
+        echo "<div class='alert alert-danger alert-dismissible text-center fade show' role='alert'>
+                <strong>Error!</strong> Doctor with the same contact already exists.
+                <button type='button' class='btn btn-outline-danger' data-dismiss='alert' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
+    } else {
         // Validate file type
         $allowedTypes = array('image/jpeg', 'image/jpg', 'image/png');
         if (!in_array($filetype, $allowedTypes)) {
@@ -39,7 +51,9 @@
             }
         }
     }
-    ?>
+}
+?>
+
     <style>
         .mid {
             margin-left: 42%;

@@ -8,7 +8,7 @@
     <?php
     include_once 'navbar.php';
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
-    $query = mysqli_query($con, "select * from orders where ord_status='pending'");
+    $query = mysqli_query($con, "SELECT * from orders where ord_status='pending' ORDER BY order_id desc");
 
     if (isset($_POST['btnpres'])) {
         $_SESSION['pres'] = $_REQUEST['btnpres'];
@@ -22,7 +22,7 @@
 
     if (isset($_POST['btnconfirm'])) {
         $order_id = $_REQUEST['btnconfirm'];
-        $updstatus = mysqli_query($con, "UPDATE orders set ord_status='done' where order_id='$order_id'");
+        $updstatus = mysqli_query($con, "UPDATE orders set ord_status='done' where order_id='$order_id' ORDER BY order_id desc");
         header('refresh:0');
     }
     ?>

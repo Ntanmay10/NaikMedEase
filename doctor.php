@@ -23,11 +23,15 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
+
+    .ml5{
+      margin-left: 45%;
+    }
   </style>
 </head>
 
 <body>
-  <form action="" method="post">
+  <form method="post">
     <div class="card-container">
       <?php
       $result = mysqli_query($con, "SELECT * FROM doctor");
@@ -43,7 +47,9 @@
                 </div>";
       }
       ?>
+    </div>
   </form>
+  <a href="index.php" class="btn btn-primary btn-block mt-1 ml5">Back to Home Page</a>
 </body>
 
 </html>
