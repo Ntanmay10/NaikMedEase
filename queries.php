@@ -8,7 +8,7 @@
     <?php include_once 'navbar.php'; ?>
     <?php
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
-    $t = mysqli_query($con, "SELECT * FROM contact");
+    $t = mysqli_query($con, "SELECT * FROM contact where cntstatus!='pending'");
     ?>
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/table.css">

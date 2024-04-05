@@ -14,6 +14,17 @@
             margin-left: 25%;
             text-align: center;
         }
+
+        .feedback-container {
+            height: 300px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .heading{
+            text-align: center;
+            background-color:aliceblue;
+        }
     </style>
 </head>
 
@@ -54,7 +65,9 @@
         <img src="./Images/Iconbar.jpg" alt="unclickable icons" />
     </div>
     <div class="feedback-container">
-        <h2>User Feedback</h2>
+        <div class="sticky-top heading">
+            <h2>User Feedback</h2>
+        </div>
         <div class="feedback">
             <?php
             $con = mysqli_connect("localhost", "root", "", "naikmedease");

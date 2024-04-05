@@ -37,6 +37,10 @@
         .mid {
             margin-left: 40%;
         }
+
+        .ml5{
+            margin-left: 30%;
+        }
     </style>
 </head>
 
@@ -58,6 +62,7 @@
             </div>
             <button type="submit" name="btnsub" class="btn btn-primary btn-block mid">Submit</button>
         </form>
+        <a href="index.php" class="btn btn-primary btn-block mt-1 ml5">Back to Home Page</a>
     </div>
 </body>
 

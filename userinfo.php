@@ -46,17 +46,19 @@
                 <tr>
                     <th>Sr. No</th>
                     <th>Name</th>
+                    <th>Type</th>
                     <th>Email</th>
                 </tr>
             </thead>
             <tbody id="myTable">
                 <?php
-                $userdata = mysqli_query($con, "select * from registration where usertyp='user'");
+                $userdata = mysqli_query($con, "select * from registration");
                 $num = 1;
                 while ($row = mysqli_fetch_assoc($userdata)) {
                     echo "<tr>
                     <td>" . $num . " 
                     <td>" . $row['usernm'] . " 
+                    <td>" . $row['usertyp'] . " 
                     <td>" . $row['email'] . "  
                     </tr>
                     ";

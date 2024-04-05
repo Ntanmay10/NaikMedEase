@@ -22,10 +22,10 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <h5>Contact Us</h5>
-                    <p>Anavil Street, Samrawadi</p>
-                    <p>+91 7478523699</p>
-                    <p>naikmedease@gmail.com</p>
+                    <h5>Reach Us</h5>
+                    <p>Opp. Bus-Stop, Chikhli</p>
+                    <p>+91 76986 22666</p>
+                    <p>raxamedical@gmail.com</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
