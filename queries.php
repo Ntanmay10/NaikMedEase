@@ -9,12 +9,21 @@
     <?php
     $con = mysqli_connect("localhost", "root", "", "naikmedease");
     $t = mysqli_query($con, "SELECT * FROM contact where cntstatus!='pending'");
+
+    if (isset($_REQUEST['clearque'])) {
+        $delquery=mysqli_query($con,"DELETE from contact where cntstatus!='pending'");
+        header('refresh:0');
+    }
     ?>
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/table.css">
     <style>
         .mid {
             margin-left: 42%;
+        }
+
+        .mid1 {
+            margin-left: 45%;
         }
 
         h2 {
@@ -42,6 +51,9 @@
             </div>
         </nav>
     </div>
+    <form action="" method="post">
+        <button type="submit" name="clearque" class="btn btn-danger mid1">Delete all queries</button>
+    </form>
     <h2>User Queries</h2>
     <table class="table table-hover text-center format rounded">
         <thead class="table-dark">

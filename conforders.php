@@ -58,19 +58,19 @@
             <div class="top">
                 <div class="form-group">
                     <label>Start Date</label>
-                    <input type="date" class="form-control" name="sdate" value="">
+                    <input type="date" class="form-control" name="sdate">
                 </div>
                 <div class="form-group">
                     <label>End Date</label>
-                    <input type="date" class="form-control" name="edate" value="">
+                    <input type="date" class="form-control" name="edate">
                 </div>
             </div>
             <div class="bott">
                 <div class="form-group middle3">
                     <label>&nbsp; </label>
-                    <input type="submit" class="btn btn-outline-warning" name="btnfilter" value="Filter">
+                    <button type="submit" class="btn btn-outline-warning" name="btnfilter">Filter</button>
                     <label>&nbsp; </label>
-                    <input type="submit" class="btn btn-outline-warning" name="btnall" value="All">
+                    <button type="submit" class="btn btn-outline-warning" name="btnall">All</button>
                 </div>
             </div>
         </div>
@@ -120,6 +120,7 @@
                 </tbody>
             </table>
         </div>
+    </form>
         <script src="./js/nav.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -134,7 +135,6 @@
                 });
             });
         </script>
-    </form>
 
 </body>
 
