@@ -71,21 +71,21 @@ We welcome contributions! To contribute:
 1. Fork the repository.
 2. Create a new branch:
 
-   bash
+   ```bash
    git checkout -b feature/YourFeatureName
-   
+   ```
 
 3. Commit your changes:
 
-   bash
+   ```bash
    git commit -m 'Add YourFeatureName'
-   
+   ```
 
 4. Push to the branch:
 
-   bash
+   ```bash
    git push origin feature/YourFeatureName
-   
+   ```
 
 5. Open a pull request.
 
