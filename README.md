@@ -57,6 +57,11 @@ NaikMedease is designed to streamline the healthcare experience by providing an 
 
 4. Configure environment variables:
    - Update config.php with your database credentials.
+  
+5. Create the following directories:
+   - medimg.
+   - presimg
+   - images/<your-GooglePay_QR.png>
 
 ### Admin Panel
 Access the admin panel by navigating to /admin. Log in with your admin credentials to manage the platform.
